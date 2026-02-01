@@ -13,3 +13,7 @@ replacements = ["github.com/theNewDynamic/gohugo-theme-ananke/v2 -> ../../"]
 
 [[module.imports]]
 path = "github.com/theNewDynamic/gohugo-theme-ananke/v2"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
