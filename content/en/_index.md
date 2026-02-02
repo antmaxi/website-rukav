@@ -7,7 +7,7 @@ description: ""
 
 **RuKAV** - ("Sleeve" in Russian) - is a "Russian-speaking Cultural and Academic Association" 
 based in Zurich, Switzerland (abbreviation from the German name "**Ru**ssischsprechender 
-**K**ultureller und **A**kademischer **V**erein"). It was founded on 17.07.2025.
+**K**ultureller und **A**kademischer **V**erein"). It was founded on 19.07.2025.
 
 ## Goals
 
