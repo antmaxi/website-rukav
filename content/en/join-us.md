@@ -20,3 +20,6 @@ the mission of the RuKAV can become its passive member
 - Honorary - without the right to vote in GA and exempt from fees. 
 
     The Board appoints such a person according to the Article IX
+
+
+-> To join, write to us in the contact form

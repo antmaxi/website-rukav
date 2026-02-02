@@ -7,7 +7,7 @@ resourceDir = "../resources"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 sectionPagesMenu = "main"
-pagerSize = 3                # this is set low for demonstrating with dummy content. Set to a higher number
+pagerSize = 3   # this is set low for demonstrating with dummy content. Set to a higher number
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -20,7 +20,7 @@ enableRobotsTXT = true
 
     [[languages.en.menu.main]]
       name = "Home"
-      url = "/"
+      url = "/en/"
       weight = 1
 
     [[languages.en.menu.main]]
@@ -43,6 +43,13 @@ enableRobotsTXT = true
       url = "/en/contact/"
       weight = 5
 
+     [[languages.en.menu.main]]
+          name = "Instagram"
+          url = "https://instagram.com/rukav.swiss"
+          weight = 90
+          #pre = "<i class=\"fab fa-instagram\"></i>"   # optional Font Awesome icon
+          params.newtab = true                         # custom param – we’ll use it later
+
 
   [languages.ru]
     title = "РуКАВ"
@@ -51,7 +58,7 @@ enableRobotsTXT = true
 
     [[languages.ru.menu.main]]
       name = "Главная"
-      url = "/"
+      url = "/ru/"
       weight = 1
 
     [[languages.ru.menu.main]]
@@ -74,6 +81,13 @@ enableRobotsTXT = true
       url = "/ru/contact/"
       weight = 5
 
+    [[languages.ru.menu.main]]
+      name = "Instagram"
+      url = "https://instagram.com/rukav.swiss"
+      weight = 90
+      #pre = "<i class=\"fab fa-instagram\"></i>"  # optional Font Awesome icon
+      params.newtab = true                         # custom param – we’ll use it later
+
 
 [sitemap]
 changefreq = "monthly"
@@ -81,20 +95,13 @@ priority = 0.5
 filename = "sitemap.xml"
 
 [params]
-text_color = ""
+text_color = "white"
 author = ""
-favicon = ""
-site_logo = ""
+favicon = "images/logo.png"
+site_logo = "images/logo.png"
 description = "The last theme you'll ever need. Maybe."
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-dark-blue"
 recent_posts_number = 3
 
 custom_css = ["css/custom.css"]
-
-instagram = "https://instagram.com/rukav.swiss"
-
-[[params.ananke_socials]]
-name = "instagram"
-url = "https://instagram.com/rukav.swiss"
-
