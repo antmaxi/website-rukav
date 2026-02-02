@@ -1,0 +1,100 @@
+title = "RuKAV Association"
+baseURL = "https://gohugo-theme-ananke.pages.dev"
+languageCode = "en-us"
+theme = ["ananke"]
+resourceDir = "../resources"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+sectionPagesMenu = "main"
+pagerSize = 3                # this is set low for demonstrating with dummy content. Set to a higher number
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[languages]
+
+  [languages.en]
+    title = "RuKAV"
+    weight = 1
+    contentDir = "content/en"
+
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/"
+      weight = 1
+
+    [[languages.en.menu.main]]
+      name = "Join us"
+      url = "/en/join-us/"
+      weight = 2
+
+    [[languages.en.menu.main]]
+      name = "Events"
+      url = "/en/events/"
+      weight = 3
+
+    [[languages.en.menu.main]]
+      name = "Board"
+      url = "/en/board/"
+      weight = 4
+
+    [[languages.en.menu.main]]
+      name = "Contact"
+      url = "/en/contact/"
+      weight = 5
+
+
+  [languages.ru]
+    title = "РуКАВ"
+    weight = 2
+    contentDir = "content/ru"
+
+    [[languages.ru.menu.main]]
+      name = "Главная"
+      url = "/"
+      weight = 1
+
+    [[languages.ru.menu.main]]
+      name = "Присоединиться"
+      url = "/ru/join-us/"
+      weight = 2
+
+    [[languages.ru.menu.main]]
+      name = "Мероприятия"
+      url = "/ru/events/"
+      weight = 3
+
+    [[languages.ru.menu.main]]
+      name = "Правление"
+      url = "/ru/board/"
+      weight = 4
+
+    [[languages.ru.menu.main]]
+      name = "Контакты"
+      url = "/ru/contact/"
+      weight = 5
+
+
+[sitemap]
+changefreq = "monthly"
+priority = 0.5
+filename = "sitemap.xml"
+
+[params]
+text_color = ""
+author = ""
+favicon = ""
+site_logo = ""
+description = "The last theme you'll ever need. Maybe."
+# choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+background_color_class = "bg-dark-blue"
+recent_posts_number = 3
+
+custom_css = ["css/custom.css"]
+
+instagram = "https://instagram.com/rukav.swiss"
+
+[[params.ananke_socials]]
+name = "instagram"
+url = "https://instagram.com/rukav.swiss"
+
