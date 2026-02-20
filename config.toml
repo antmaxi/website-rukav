@@ -1,5 +1,5 @@
 title = "RuKAV Association"
-baseURL = "https://gohugo-theme-ananke.pages.dev"
+baseURL = "https://rukav-swiss.github.io/website-rukav/"
 languageCode = "en-us"
 theme = ["ananke"]
 resourceDir = "../resources"
