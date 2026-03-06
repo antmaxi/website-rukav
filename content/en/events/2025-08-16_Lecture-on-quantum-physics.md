@@ -7,5 +7,5 @@ title: "Lecture"
 ---
 We organised the lecture by Kirill Voronin - the PhD-candidate from San-Sebastian (Spain)
 
-![Panoramic photo](/images/2025-08-16_Lecture-panoramic.JPG)
-![All people in the end](/images/2025-08-16_Lecture-final-people.JPG)
+![Panoramic photo](images/2025-08-16_Lecture-panoramic.JPG)
+![All people in the end](images/2025-08-16_Lecture-final-people.JPG)
