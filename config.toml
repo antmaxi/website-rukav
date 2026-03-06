@@ -6,8 +6,8 @@ resourceDir = "../resources"
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
-sectionPagesMenu = "main"
-pagerSize = 3   # this is set low for demonstrating with dummy content. Set to a higher number
+# sectionPagesMenu = "main" # for automatic section creation
+pagerSize = 5
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -28,7 +28,10 @@ enableRobotsTXT = true
       url = "/en/join-us/"
       weight = 2
 
-
+    [[languages.en.menu.main]]
+      name = "Events"
+      url = "/en/events/"
+      weight = 3
 
     [[languages.en.menu.main]]
       name = "Board"
