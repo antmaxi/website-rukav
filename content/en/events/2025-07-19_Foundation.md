@@ -7,4 +7,5 @@ title: "Foundation"
 ---
 We founded the association!
 
-{{< figure src="/images/2025-07-19_Foundation-sunset.jpg" alt="Sunset view" >}}
+![Present people](images/2025-07-19_Foundation-group-with-smiles.png)
+![Sunset view](images/2025-07-19_Foundation-sunset.jpg)

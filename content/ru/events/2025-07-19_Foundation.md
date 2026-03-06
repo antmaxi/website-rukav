@@ -7,5 +7,5 @@ title: "Основание"
 ---
 Мы основали ассоциацию!
 
-![Present people](/images/2025-07-19_Foundation-group-with-smiles.png)
-![Sunset view](/images/2025-07-19_Foundation-sunset.jpg)
+![Present people](images/2025-07-19_Foundation-group-with-smiles.png)
+![Sunset view](images/2025-07-19_Foundation-sunset.jpg)
