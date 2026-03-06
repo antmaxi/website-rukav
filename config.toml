@@ -39,9 +39,14 @@ enableRobotsTXT = true
       weight = 4
 
     [[languages.en.menu.main]]
+      name = "Documents"
+      url = "/en/documents/"
+      weight = 5
+
+    [[languages.en.menu.main]]
       name = "Contact"
       url = "/en/contact/"
-      weight = 5
+      weight = 6
 
      [[languages.en.menu.main]]
           name = "Instagram"
@@ -77,9 +82,14 @@ enableRobotsTXT = true
       weight = 4
 
     [[languages.ru.menu.main]]
+      name = "Документы"
+      url = "/ru/documents/"
+      weight = 5
+
+    [[languages.ru.menu.main]]
       name = "Контакты"
       url = "/ru/contact/"
-      weight = 5
+      weight = 6
 
     [[languages.ru.menu.main]]
       name = "Instagram"
@@ -95,7 +105,7 @@ priority = 0.5
 filename = "sitemap.xml"
 
 [params]
-text_color = "white"
+text_color = "black" #"white"
 author = ""
 favicon = "images/rukav_logo_square-transparent.png"
 site_logo = "images/rukav_logo_square-transparent.png"
@@ -109,4 +119,4 @@ custom_css = ["css/custom.css"]
 [params.events]
   showUpcoming = true
   maxDisplay = 5
-  dateFormat = "January 2, 2006"
+  dateFormat = "2 January, 2006"

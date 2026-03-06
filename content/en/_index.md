@@ -1,7 +1,7 @@
 ---
 title: ""
 description: ""
-unsafe: true   # <‑‑ enable raw HTML just for this page
+unsafe: false   # <‑‑ enable raw HTML just for this page
 ---
 
 # About the Association
