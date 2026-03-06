@@ -5,3 +5,4 @@ featured_image: "images/board-games-generic.png"
 tags: []
 title: "Настольные игры"
 ---
+Каждую пятницу мы проводим встречу с настольными играми и общением

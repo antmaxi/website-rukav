@@ -3,7 +3,7 @@ title: "Join us!"
 description: ""
 ---
 
-There are 3 types of members:
+According to our [statutes]({{< relref "documents.md" >}}), there are 3 types of members:
 
 - Active - with a right to vote in GA
 
@@ -22,4 +22,4 @@ the mission of the RuKAV can become its passive member
     The Board appoints such a person according to the Article IX
 
 
--> To join, write to us in the contact form
+-> To join, write to us in the [contact form]({{< relref "contact.md" >}})

@@ -5,3 +5,4 @@ featured_image: "images/board-games-generic.png"
 tags: []
 title: "Board games"
 ---
+Every Friday we hold a meeting with board games and socializing
