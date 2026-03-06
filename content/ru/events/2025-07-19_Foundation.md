@@ -3,7 +3,7 @@ date: 2025-07-19T00:00:00-04:00
 description: ""
 featured_image: "images/2025-07-19_Foundation-papers.jpg"
 tags: []
-title: "Основание"
+title: "Основание Ассоциации"
 ---
 Мы основали ассоциацию!
 
