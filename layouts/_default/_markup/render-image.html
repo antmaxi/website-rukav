@@ -1,1 +1,1 @@
-<img src="{{ (path.Join $.Page.Site.BaseURL .Destination) }}" alt="{{ .Text }}" />
+<img src="{{ .Destination | absURL }}" alt="{{ .Text }}" />
