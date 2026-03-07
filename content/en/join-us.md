@@ -22,4 +22,4 @@ the mission of the RuKAV can become its passive member
     The Board appoints such a person according to the Article IX
 
 
--> To join, write to us <!--in the [contact form]({{< relref "contact.md" >}})-->
+-> To join, write to us in the [contact form]({{< relref "contact.md" >}})
