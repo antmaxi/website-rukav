@@ -12,7 +12,7 @@ based in Zurich, Switzerland (abbreviation from the German name "**Ru**ssischspr
 
 ## Goals
 
-The RuKAV is a not commercially, politically, or religiously motivated association, which pursues the following goals:
+As stated in our [statutes]({{< relref "documents.md" >}}), the RuKAV is a not commercially, politically, or religiously motivated association, which pursues the following goals:
 
 1. To facilitate connections among students and academics, and others who share common interests, values, and deep connection to the Russian language, promoting collaboration and mutual support within the academic and professional communities in Zurich
 
