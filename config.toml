@@ -24,13 +24,13 @@ enableRobotsTXT = true
       weight = 1
 
     [[languages.en.menu.main]]
-      name = "Join us"
-      url = "/en/join-us/"
+      name = "Events"
+      url = "/en/events/"
       weight = 2
 
     [[languages.en.menu.main]]
-      name = "Events"
-      url = "/en/events/"
+      name = "Join us"
+      url = "/en/join-us/"
       weight = 3
 
     [[languages.en.menu.main]]
@@ -67,13 +67,13 @@ enableRobotsTXT = true
       weight = 1
 
     [[languages.ru.menu.main]]
-      name = "Присоединиться"
-      url = "/ru/join-us/"
+      name = "Мероприятия"
+      url = "/ru/events/"
       weight = 2
 
     [[languages.ru.menu.main]]
-      name = "Мероприятия"
-      url = "/ru/events/"
+      name = "Присоединиться"
+      url = "/ru/join-us/"
       weight = 3
 
     [[languages.ru.menu.main]]
