@@ -8,5 +8,6 @@ title: "Reading club"
 
 Started the monthly reading club. The first book was Dostoevsky's "Poor Folk".
 
-03/27/2026 - Kurt Vonnegut "Mother Night"
+27.03.2026 - Kurt Vonnegut "Mother Night"
 
+17.04.2026 - Hermann Hesse "Der Steppenwolf"
