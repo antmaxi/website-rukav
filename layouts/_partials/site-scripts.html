@@ -1,1 +1,8 @@
-{{/* For Users's overwrite */}}
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>

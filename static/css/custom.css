@@ -1,3 +1,74 @@
+:root {
+  --bg-color: #001f3f;
+  --text-color: #eeeeee;
+  --header-bg: #001f3f;
+  --link-color: #cccccc;
+  --link-hover-color: #ffffff;
+  --input-bg: #002f5f;
+  --button-bg: #003366;
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --header-bg: #f4f4f4;
+  --link-color: #555555;
+  --link-hover-color: #000000;
+  --input-bg: #f4f4f4;
+  --button-bg: #000000;
+}
+
+body, .bg-near-white {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.bg-dark-blue {
+  background-color: var(--header-bg) !important;
+}
+
+.bg-black {
+  background-color: var(--button-bg) !important;
+}
+
+.bg-white, .gray {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+.bg-light-gray {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.b--moon-gray, .b--black-10 {
+  border-color: var(--text-color) !important;
+  opacity: 0.3;
+}
+
+.nested-copy-line-height {
+  color: var(--text-color) !important;
+}
+
+/* Override Ananke classes to use CSS variables */
+.white-90, .light-silver, .near-black, .black, .dark-gray, .mid-gray, .black-80, .black-70, .silver {
+  color: var(--text-color) !important;
+}
+
+.white-80, .white-70 {
+  color: var(--text-color) !important;
+  opacity: 0.8;
+}
+
+.hover-white:hover {
+  color: var(--link-hover-color) !important;
+}
+
+a.no-underline {
+  color: var(--link-color);
+}
+
 .measure {
   max-width: 80% !important;
 }
@@ -8,4 +79,33 @@
 
 .center {
   max-width: 85% !important;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+#theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.dark-icon {
+  display: none;
+}
+
+[data-theme="light"] .light-icon {
+  display: none;
+}
+
+[data-theme="light"] .dark-icon {
+  display: block;
 }
