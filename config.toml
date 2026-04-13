@@ -104,7 +104,7 @@ enableRobotsTXT = true
       #pre = "<i class=\"fab fa-instagram\"></i>"  # optional Font Awesome icon
       params.newtab = true                         # custom param – we’ll use it later
 
-    [[languages.en.menu.main]]
+    [[languages.ru.menu.main]]
       name = "▶️"
       url = "https://www.youtube.com/@Rukav-Swiss"
       weight = 91
