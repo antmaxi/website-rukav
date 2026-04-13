@@ -7,5 +7,7 @@ title: "Лекция по квантовой механике"
 ---
 Мы организовали лекцию по истории интерпретаций квантовой механики. Докладчик - Кирилл Воронин - аспирант из Сан-Себастьяна (Испания).
 
+[Запись](https://youtu.be/G18pfaijTFo) лекции на Youtube.
+
 ![Panoramic photo](images/2025-08-16_Lecture-panoramic.JPG)
 ![All people in the end](images/2025-08-16_Lecture-final-people.JPG)
