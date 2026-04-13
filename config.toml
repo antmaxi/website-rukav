@@ -55,6 +55,12 @@ enableRobotsTXT = true
           #pre = "<i class=\"fab fa-instagram\"></i>"   # optional Font Awesome icon
           params.newtab = true                         # custom param – we’ll use it later
 
+    [[languages.en.menu.main]]
+          name = "▶️"
+          url = "https://www.youtube.com/@Rukav-Swiss"
+          weight = 91
+          params.newtab = true                         # custom param – we’ll use it later
+
 
   [languages.ru]
     title = "РуКАВ"
@@ -96,6 +102,12 @@ enableRobotsTXT = true
       url = "https://instagram.com/rukav.swiss"
       weight = 90
       #pre = "<i class=\"fab fa-instagram\"></i>"  # optional Font Awesome icon
+      params.newtab = true                         # custom param – we’ll use it later
+
+    [[languages.en.menu.main]]
+      name = "▶️"
+      url = "https://www.youtube.com/@Rukav-Swiss"
+      weight = 91
       params.newtab = true                         # custom param – we’ll use it later
 
 
