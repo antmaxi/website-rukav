@@ -14,4 +14,7 @@ We organize a monthly reading club.
 
 17.04.2026 - Hermann Hesse "Der Steppenwolf"
 
-29.05.2026 - Андрей Платонов "Чевенгур" Andrey Platonov "Chevengur"
+29.05.2026 - Andrey Platonov "Chevengur"
+
+![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
+![Poster for Mother-night](images/book-club_Mother-night.jpg)

@@ -15,3 +15,6 @@ title: "Читательский клуб"
 17.04.2026 - Герман Гессе "Степной волк"
 
 29.05.2026 - Андрей Платонов "Чевенгур"
+
+![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
+![Poster for Mother-night](images/book-club_Mother-night.jpg)
