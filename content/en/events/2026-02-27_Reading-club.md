@@ -6,8 +6,12 @@ tags: []
 title: "Reading club"
 ---
 
-Started the monthly reading club. The first book was Dostoevsky's "Poor Folk".
+We organize a monthly reading club.
+
+27.02.2026 - Fyodor Dostoevsky "Poor Folk"
 
 27.03.2026 - Kurt Vonnegut "Mother Night"
 
 17.04.2026 - Hermann Hesse "Der Steppenwolf"
+
+29.05.2026 - Андрей Платонов "Чевенгур" Andrey Platonov "Chevengur"
