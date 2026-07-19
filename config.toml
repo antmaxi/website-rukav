@@ -49,9 +49,14 @@ enableRobotsTXT = true
       weight = 6
 
     [[languages.en.menu.main]]
+      name = "Donate"
+      url = "/en/donate/"
+      weight = 7
+
+    [[languages.en.menu.main]]
       name = "Contact"
       url = "/en/contact/"
-      weight = 7
+      weight = 8
 
      [[languages.en.menu.main]]
           name = "📸"
@@ -102,10 +107,15 @@ enableRobotsTXT = true
       url = "/ru/links/"
       weight = 6
 
+    [[languages.en.menu.main]]
+      name = "Donate"
+      url = "/en/donate/"
+      weight = 7
+
    [[languages.ru.menu.main]]
       name = "Контакты"
-      url = "/ru/contact/"
-      weight = 7
+      url = "/ru/donate/"
+      weight = 8
 
     [[languages.ru.menu.main]]
       name = "📸"
