@@ -114,7 +114,7 @@ enableRobotsTXT = true
 
    [[languages.ru.menu.main]]
       name = "Контакты"
-      url = "/ru/donate/"
+      url = "/ru/contact/"
       weight = 8
 
     [[languages.ru.menu.main]]
@@ -141,13 +141,17 @@ text_color = "black" #"white"
 author = ""
 favicon = "images/rukav_logo_square-transparent.png"
 site_logo = "images/rukav_logo_square-transparent.png"
-description = "The last theme you'll ever need. Maybe."
+description = "RuKAV — the Russian-speaking Cultural and Academic Association in Zurich, Switzerland. Events, community, and support for Russian-speaking students and academics."
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-dark-blue"
 recent_posts_number = 3
 
 custom_css = ["css/custom.css"]
 
+# NOT YET IMPLEMENTED: no layout reads these values, so changing them has no
+# effect. Kept as a placeholder for the planned events-listing work (upcoming vs
+# past split, date formatting). Wire these into the events list layout before
+# relying on them.
 [params.events]
   showUpcoming = true
   maxDisplay = 5

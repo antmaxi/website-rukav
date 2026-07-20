@@ -1,6 +1,6 @@
 ---
 title: "Support us"
-description: ""
+description: "Support the RuKAV association in Zurich with a donation to our bank account at Zürcher Kantonalbank."
 ---
 
 You can support us by donating to our bank account:

@@ -1,6 +1,6 @@
 ---
 title: "Useful links"
-description: ""
+description: "Useful links for Russian-speaking students and academics living in Zurich and Switzerland."
 ---
 Useful links
 

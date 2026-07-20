@@ -1,6 +1,6 @@
 ---
 title: "Board members"
-description: ""
+description: "Members of the RuKAV board: president, secretary and treasurer of the Russian-speaking Cultural and Academic Association in Zurich."
 ---
 President: Anton M.
 

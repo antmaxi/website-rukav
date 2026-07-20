@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-description: ""
+description: "Get in touch with the RuKAV association in Zurich — send us a message and we will reply by email."
 omit_header_text: true
 ---
 

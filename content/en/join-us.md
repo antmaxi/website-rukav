@@ -1,6 +1,6 @@
 ---
 title: "Join us!"
-description: ""
+description: "How to become a member of the RuKAV association in Zurich — active, passive and honorary membership types and fees."
 ---
 
 According to our statutes, there are 3 types of members:

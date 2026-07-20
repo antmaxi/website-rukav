@@ -1,0 +1,18 @@
+{{/*
+  Content Security Policy.
+
+  GitHub Pages cannot set HTTP response headers, so the policy is delivered as a
+  meta tag. Note that frame-ancestors, report-uri and sandbox are IGNORED when a
+  CSP arrives via <meta> — clickjacking protection therefore still requires a
+  proxy (e.g. Cloudflare) in front of Pages that can set real headers.
+
+  Directives below reflect what the site actually loads:
+    - 'unsafe-inline' in script-src: the theme-switcher and theme-preference
+      scripts are inline (see theme-switcher.html, site-scripts.html).
+    - 'unsafe-inline' in style-src: Ananke/tachyons emit inline style attributes.
+    - formspree.io in form-action: target of the contact form shortcode.
+    - frame-src 'self': the pdf shortcode iframes same-origin PDFs.
+*/}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+
+<meta name="referrer" content="strict-origin-when-cross-origin">

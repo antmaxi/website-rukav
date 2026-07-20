@@ -1,6 +1,6 @@
 ---
 title: "Documents"
-description: ""
+description: "Official documents of the RuKAV association, including the statutes adopted on 19 July 2025."
 ---
 Statutes from 19.07.2025
 
