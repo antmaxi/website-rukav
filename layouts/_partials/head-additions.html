@@ -16,3 +16,17 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
+{{/*
+  og:image. Hugo's built-in opengraph partial only emits this when a page sets
+  the "images" param, which nothing here does — featured_image is a separate,
+  Ananke-specific key. Emitting it here keeps featured_image as the single
+  source of truth instead of duplicating it in front matter.
+  (twitter:image is handled in twitter_cards.html.)
+*/}}
+{{ with partials.Include "func/GetSocialImage.html" . }}
+  <meta property="og:image" content="{{ . }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ $.Title | compare.Default site.Title }}">
+{{ end }}

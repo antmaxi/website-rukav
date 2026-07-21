@@ -1,0 +1,73 @@
+{{- /*
+  Image render hook.
+
+  Photos live in assets/images/ so Hugo can process them. Originals are camera
+  JPEGs (up to ~6 MB); this emits resized WebP variants plus a srcset so
+  browsers fetch the smallest sufficient file, and lazy-loads anything below
+  the fold.
+
+  Images listed in site.Params.verbatim_images (the bank QR code) are published
+  untouched so they stay pixel-exact, but still get width/height so they do not
+  shift the layout. Anything not found in assets/ falls through to a plain
+  <img> unchanged.
+*/ -}}
+{{- $src := .Destination -}}
+{{- $alt := .Text -}}
+{{- $title := .Title -}}
+{{- $res := resources.Get $src -}}
+{{- $verbatim := in (site.Params.verbatim_images | default slice) $src -}}
+
+{{- $processable := false -}}
+{{- with $res -}}
+  {{- if and (not $verbatim) (in (slice "image/jpeg" "image/png") .MediaType.Type) -}}
+    {{- $processable = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $processable -}}
+  {{- $widths := slice 480 960 1440 -}}
+  {{- $srcset := slice -}}
+  {{- range $widths -}}
+    {{- if ge $res.Width . -}}
+      {{- $v := $res.Resize (printf "%dx webp q82 Lanczos" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $v.RelPermalink $v.Width) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Fallback src: capped at 1440px, or the original if it is smaller. */ -}}
+  {{- $fallback := $res -}}
+  {{- if gt $res.Width 1440 -}}
+    {{- $fallback = $res.Resize "1440x webp q82 Lanczos" -}}
+  {{- else -}}
+    {{- $fallback = $res.Resize (printf "%dx webp q82" $res.Width) -}}
+  {{- end -}}
+  {{- if not $srcset -}}
+    {{- $srcset = slice (printf "%s %dw" $fallback.RelPermalink $fallback.Width) -}}
+  {{- end -}}
+
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    srcset="{{ delimit $srcset ", " }}"
+    sizes="(min-width: 60em) 60em, 100vw"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async">
+{{- else if and $res $verbatim -}}
+  {{- /* Published as-is; .Permalink on an unprocessed resource copies the file
+         through untouched, so the bytes served are identical to the source. */ -}}
+  <img
+    src="{{ $res.RelPermalink }}"
+    width="{{ $res.Width }}"
+    height="{{ $res.Height }}"
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async">
+{{- else -}}
+  <img src="{{ $src | urls.RelURL }}" alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy" decoding="async">
+{{- end -}}

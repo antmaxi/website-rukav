@@ -1,0 +1,27 @@
+{{/*
+	GetSocialImage
+
+	Resolves the image used for og:image / twitter:image and returns an absolute
+	URL to a 1200x630 JPEG crop of it (the size link previews expect).
+
+	Order of preference:
+	  1. the page's own featured_image
+	  2. site.Params.social_image, so pages without a featured image (home,
+	     donate, contact, ...) still preview with a picture
+
+	JPEG rather than WebP on purpose: some link-preview crawlers still do not
+	handle WebP, and this file is only ever fetched by them.
+
+	@return absolute URL to a social preview image, or "" if none is configured.
+*/}}
+
+{{- $out := "" -}}
+{{- $candidate := .Params.featured_image | default site.Params.social_image -}}
+{{- with $candidate -}}
+  {{- with resources.Get . -}}
+    {{- if in (slice "image/jpeg" "image/png") .MediaType.Type -}}
+      {{- $out = (.Fill "1200x630 jpg q85 Smart").Permalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}
