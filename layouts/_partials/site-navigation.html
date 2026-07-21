@@ -11,12 +11,16 @@
       {{ partial "theme-switcher.html" . }}
       {{ partials.Include "i18nlist.html" . }}
       {{ if .Site.Menus.main }}
-        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
           {{ range .Site.Menus.main }}
-          <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+          <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
+            {{/* Menu entries whose name is just an emoji (the social links) set
+                 "label" so they get a real accessible name; without it a screen
+                 reader announces the useless "📸 page". */}}
             <a class="hover-white white-90 no-underline" href="{{ .URL }}"
               {{- with .Params.newtab }} target="_blank" rel="noopener noreferrer"{{ end }}
-              title="{{ lang.Translate "pageTitle" . }}">
+              {{- with .Params.label }} aria-label="{{ . }}" title="{{ . }}"
+              {{- else }} title="{{ lang.Translate "pageTitle" . }}"{{ end }}>
               {{ .Name }}
             </a>
           </li>

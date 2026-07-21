@@ -1,6 +1,6 @@
 title = "RuKAV Association"
 baseURL = "https://rukav-swiss.ch/"
-languageCode = "en-us"
+locale = "en-us"
 theme = ["ananke"]
 resourceDir = "../resources"
 
@@ -60,6 +60,7 @@ enableRobotsTXT = true
 
      [[languages.en.menu.main]]
           name = "📸"
+          params.label = "Instagram"
           url = "https://instagram.com/rukav.swiss"
           weight = 90
           #pre = "<i class=\"fab fa-instagram\"></i>"   # optional Font Awesome icon
@@ -67,6 +68,7 @@ enableRobotsTXT = true
 
     [[languages.en.menu.main]]
           name = "▶️"
+          params.label = "YouTube"
           url = "https://www.youtube.com/@Rukav-Swiss"
           weight = 91
           params.newtab = true                         # custom param – we’ll use it later
@@ -119,6 +121,7 @@ enableRobotsTXT = true
 
     [[languages.ru.menu.main]]
       name = "📸"
+      params.label = "Instagram"
       url = "https://instagram.com/rukav.swiss"
       weight = 90
       #pre = "<i class=\"fab fa-instagram\"></i>"  # optional Font Awesome icon
@@ -126,6 +129,7 @@ enableRobotsTXT = true
 
     [[languages.ru.menu.main]]
       name = "▶️"
+      params.label = "YouTube"
       url = "https://www.youtube.com/@Rukav-Swiss"
       weight = 91
       params.newtab = true                         # custom param – we’ll use it later
@@ -141,11 +145,21 @@ text_color = "black" #"white"
 author = ""
 favicon = "images/rukav_logo_square-transparent.png"
 site_logo = "images/rukav_logo_square-transparent.png"
+# Link-preview image for pages that have no featured_image of their own
+# (home, donate, contact, ...). Resolved from assets/ by func/GetSocialImage.html.
+social_image = "images/2025-07-19_Foundation-group-with-smiles.png"
+
+# Images published byte-for-byte, with no resizing or re-encoding. The render
+# hook still emits width/height for them, so they do not cause layout shift.
+# Use this for anything where recompression artifacts would matter: the bank QR
+# code has to stay scannable, and Hugo cannot emit truly lossless WebP.
+verbatim_images = ["images/rukav_bank-qr-code.png"]
 description = "RuKAV — the Russian-speaking Cultural and Academic Association in Zurich, Switzerland. Events, community, and support for Russian-speaking students and academics."
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-dark-blue"
 recent_posts_number = 3
 
+[params.ananke]
 custom_css = ["css/custom.css"]
 
 # NOT YET IMPLEMENTED: no layout reads these values, so changing them has no

@@ -36,3 +36,17 @@ other = "Ниже вы найдете страницы, на которых ис
 
 [pageTitle]
 other = "{{ .Name }} страница"
+[by]
+other = "Автор"
+
+[readingTime]
+one = "1 минута чтения"
+few = "{{ .Count }} минуты чтения"
+many = "{{ .Count }} минут чтения"
+other = "{{ .Count }} минуты чтения"
+
+[wordCount]
+one = "1 слово"
+few = "{{ .Count }} слова"
+many = "{{ .Count }} слов"
+other = "{{ .Count }} слова"

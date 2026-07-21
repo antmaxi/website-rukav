@@ -11,6 +11,11 @@
 	If no featured_image was set, and there's no "cover" image in page resources, then
 	this partial returns an empty string (which evaluates to false).
 
+	Featured images found in assets/ are resized to 1600px WebP before being
+	returned: the originals are multi-megabyte camera JPEGs, and this value is used
+	both as a CSS background-image and as a summary-card <img>. Anything not found
+	in assets/ falls back to the original static/ behaviour.
+
 	@return RelPermalink to featured image, or an empty string if not found.
 
 */}}
@@ -23,6 +28,18 @@
   {{/* This is the default case, the image lives in the static directory.
     In which case we'll use the static dir */}}
   {{ $linkToCover = strings.Trim . "/" | urls.AbsURL }}
+  {{/* Prefer a resized copy from assets/ when one exists. */}}
+  {{ with resources.Get . }}
+    {{ if in (slice "image/jpeg" "image/png") .MediaType.Type }}
+      {{ $img := . }}
+      {{ if gt .Width 1600 }}
+        {{ $img = .Resize "1600x webp q82 Lanczos" }}
+      {{ else }}
+        {{ $img = .Resize (printf "%dx webp q82" .Width) }}
+      {{ end }}
+      {{ $linkToCover = $img.Permalink }}
+    {{ end }}
+  {{ end }}
   {{/* If we find a Page Resource matching the exact value, we use it instead. */}}
   {{ with $.Resources.GetMatch . }}
     {{ $linkToCover = .RelPermalink }}

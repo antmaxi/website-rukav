@@ -1,0 +1,27 @@
+{{/*
+  Overrides Hugo's built-in twitter_cards partial.
+
+  The built-in one keys off the "images" param, which this site does not use
+  (Ananke uses featured_image), so it always emitted card type "summary" with no
+  image — a bare text stub when a link is shared. This resolves the image the
+  same way og:image does and upgrades the card to summary_large_image whenever
+  one exists.
+*/}}
+{{- $img := partials.Include "func/GetSocialImage.html" . -}}
+{{- $desc := "" -}}
+{{- with .Description -}}
+  {{- $desc = . -}}
+{{- else -}}
+  {{- if .IsPage -}}
+    {{- $desc = .Summary -}}
+  {{- else -}}
+    {{- $desc = site.Params.description -}}
+  {{- end -}}
+{{- end -}}
+
+<meta name="twitter:card" content="{{ compare.Conditional $img "summary_large_image" "summary" }}">
+<meta name="twitter:title" content="{{ .Title | compare.Default site.Title }}">
+<meta name="twitter:description" content="{{ $desc | transform.Plainify | strings.Truncate 200 }}">
+{{- with $img }}
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}

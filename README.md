@@ -1,71 +1,120 @@
-# Ananke, a starter theme for GoHugo
+# rukav-swiss.ch
 
-> [!WARNING]
-> If you are experiencing issues with recent Hugo versions please check the [Discussion about the layout changes](https://github.com/theNewDynamic/gohugo-theme-ananke/discussions/886) and add your issues there. Thank you!
+Website of **RuKAV** — the Russian-speaking Cultural and Academic Association
+(*Russischsprechender Kultureller und Akademischer Verein*) in Zurich, Switzerland.
 
-The intent of this theme is to provide a solid starting place for [GoHugo](https://gohugo.io/) sites with basic features and include best practices for performance, accessibility, and rapid development.
+Built with [Hugo](https://gohugo.io/), using the
+[Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) theme (MIT) as a
+git submodule, and deployed to GitHub Pages.
 
-![screenshot](images/screenshot.png)
+Live site: <https://rukav-swiss.ch/>
 
-[DEMO](https://ananke-theme.netlify.app/)
+## Requirements
 
-Features
+- Hugo **extended**, version `0.164.0` (the version CI builds with — see
+  [.github/workflows/hugo.yaml](.github/workflows/hugo.yaml))
 
-* Responsive
-* Accessible
-* Contact form
-* Custom Robots.txt (changes values based on environment)
-* Internal templates for meta data, google analytics, and DISQUS or COMMENTO comments
-* RSS Discovery
-* Table of Contents (must declare `toc: true` in post parameter)
+No Node.js toolchain is needed: CSS is assembled by Hugo from the theme's own
+`assets/ananke/css/`.
 
-Also includes examples of Hugo Features or Functions:
+## Updating the theme
 
-* Pagination (internal template)
-* Taxonomies
-* Archetypes
-* Custom shortcode
-* Related content
-* Hugo built-in menu
-* i18n
-* `with`
-* `first`
-* `after`
-* `sort`
-* Site LanguageCode
-* `where`
-* Content Views
-* Partials
-* Template layouts (type "post" uses a special list template, single template, and a content view)
-* Tags
-* `len`
-* Conditionals
-* `ge` (greater than or equal to)
-* `.Site.Params.mainSections` to avoid hard-coding "blog," etc. [[release note](https://github.com/gohugoio/hugo/blob/66ec6305f6cb450ddf9c489854146bac02f7dca1/docs/content/meta/release-notes.md#enhancements)]
+`themes/ananke` is a git submodule. To pick up a new Ananke release:
 
-This theme uses the [Tachyons CSS library](https://tachyons.io/). This will allow you to manipulate the design of the theme by changing class names in HTML without touching the original CSS files.
+```bash
+cd themes/ananke
+git fetch --tags
+git checkout vX.Y.Z
+cd ../..
+git add themes/ananke
+```
 
-## Compatibility
+Then rebuild and check that nothing in `layouts/` (our overrides) has drifted
+from the new upstream templates — [Ananke's release notes](https://github.com/theNewDynamic/gohugo-theme-ananke/releases)
+list breaking changes.
 
-> [!IMPORTANT]  
-> The [main](https://github.com/theNewDynamic/gohugo-theme-ananke) branch contains the latest version of Ananke that is tested and working with GoHugo v0.146.0+. If you wish to use an older version of GoHugo, use the [v2.12 branch](https://github.com/theNewDynamic/gohugo-theme-ananke/tree/release/v2.12) that is working with GoHugo v0.128.1 to v0.145.0. To get the theme working with an even older version of GoHugo feel free to peruse the [releases page](https://github.com/theNewDynamic/gohugo-theme-ananke/tags) to find a version that is working with your GoHugo version.
+## Local development
 
-## Installation
+```bash
+git clone --recurse-submodules git@github.com:rukav-swiss/website-rukav.git
+cd website-rukav
+hugo server
+```
 
-Dive into our [documentation on installing the theme as GoHugo Module or Git Submodule](https://github.com/theNewDynamic/gohugo-theme-ananke/wiki/Installation). [The official setup guide](https://gohugo.io/getting-started/quick-start/) of GoHugo covers the installation of the theme as Git Submodule.
+Then open <http://localhost:1313/>.
 
-## Getting started
+To produce a production build into `public/`:
 
-After installing the theme successfully it requires [a few more steps to get your site running](https://github.com/theNewDynamic/gohugo-theme-ananke/wiki/Getting-Started). Read on for a quick overview of the most important steps. Or follow one of the more detailed guides following.
+```bash
+hugo --gc --minify
+```
 
-## Latest Changes
+## Layout
 
-See the [CHANGELOG](CHANGELOG.md) for details about what has changed recently. For a list of older changes, see the [changelog-old.md](.github/changelog-old.md) file.
+| Path | Contents |
+|---|---|
+| `content/en/`, `content/ru/` | Page content, one directory per language |
+| `config.toml` | Site config: languages, menus, params |
+| `layouts/` | Templates that override the theme; only files that differ from [Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) live here — everything else comes from `themes/ananke` |
+| `assets/images/` | Photos, processed by Hugo (resized to WebP + `srcset`) |
+| `static/` | Files served verbatim: logos, favicon, PDFs |
+| `i18n/` | UI string translations |
 
-## Contributing
+`static/images/gohugo-default-sample-hero-image.jpg` is an intentional 0-byte
+stub: Ananke ships an unused sample image at that path, and this project file
+shadows it so the real 280 KB original is not published. Unreferenced either
+way — safe to ignore.
 
-If you find a bug feel free to use the [issue tracker](https://github.com/theNewDynamic/gohugo-theme-ananke/issues) to let me know. If you are having issues setting up your site with the theme, or have an idea for a feature, please use the [discussions](https://github.com/theNewDynamic/gohugo-theme-ananke/discussion) for support.
+## Adding content
 
-Join me on my [ananke-theme Discord channel](https://discord.gg/MykHvyU5P3) for direct support, but please remember that I am doing this in my spare time.
+### A new event
 
-If you would like to contribute code, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute.
+Create `content/en/events/YYYY-MM-DD_slug.md` (and the Russian counterpart in
+`content/ru/events/`):
+
+```yaml
+---
+date: 2026-09-01T00:00:00+02:00
+title: "Event title"
+description: "One sentence — used for SEO and link previews."
+featured_image: "images/your-photo.jpg"
+tags: []
+---
+```
+
+Always fill in `description`: it becomes the page's meta description and the
+text shown when the link is shared.
+
+### Images
+
+Put photos in **`assets/images/`**, not `static/`. Hugo resizes them to WebP at
+several widths and emits a `srcset`, so a 6 MB camera JPEG is served as ~100 KB.
+Reference them from Markdown with a normal image link and meaningful alt text:
+
+```markdown
+![Description of the photo](images/your-photo.jpg)
+```
+
+Files in `static/images/` (the logos) are served untouched.
+
+If an image must **not** be recompressed — a QR code, or anything where
+artifacts would matter — add its path to `params.verbatim_images` in
+`config.toml`. It is then published byte-for-byte, but still gets `width` and
+`height` so it does not shift the layout. The bank QR code is handled this way:
+it has to stay scannable, and Hugo cannot produce truly lossless WebP.
+
+### Link previews
+
+`featured_image` doubles as the Open Graph / Twitter card image, cropped to
+1200x630. Pages without one fall back to `params.social_image` in `config.toml`.
+
+## Deployment
+
+Pushing to `main` triggers [.github/workflows/hugo.yaml](.github/workflows/hugo.yaml),
+which builds the site and deploys it to GitHub Pages. The custom domain is pinned
+by [static/CNAME](static/CNAME).
+
+## Licence
+
+Theme code derived from Ananke is MIT licensed — see [LICENSE.md](LICENSE.md).
+Site content and photographs belong to the RuKAV association.
