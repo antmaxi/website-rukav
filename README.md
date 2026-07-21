@@ -3,9 +3,9 @@
 Website of **RuKAV** — the Russian-speaking Cultural and Academic Association
 (*Russischsprechender Kultureller und Akademischer Verein*) in Zurich, Switzerland.
 
-Built with [Hugo](https://gohugo.io/), based on the
-[Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) theme (MIT), and
-deployed to GitHub Pages.
+Built with [Hugo](https://gohugo.io/), using the
+[Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) theme (MIT) as a
+git submodule, and deployed to GitHub Pages.
 
 Live site: <https://rukav-swiss.ch/>
 
@@ -14,7 +14,24 @@ Live site: <https://rukav-swiss.ch/>
 - Hugo **extended**, version `0.164.0` (the version CI builds with — see
   [.github/workflows/hugo.yaml](.github/workflows/hugo.yaml))
 
-No Node.js toolchain is needed: CSS is assembled by Hugo from `assets/ananke/css/`.
+No Node.js toolchain is needed: CSS is assembled by Hugo from the theme's own
+`assets/ananke/css/`.
+
+## Updating the theme
+
+`themes/ananke` is a git submodule. To pick up a new Ananke release:
+
+```bash
+cd themes/ananke
+git fetch --tags
+git checkout vX.Y.Z
+cd ../..
+git add themes/ananke
+```
+
+Then rebuild and check that nothing in `layouts/` (our overrides) has drifted
+from the new upstream templates — [Ananke's release notes](https://github.com/theNewDynamic/gohugo-theme-ananke/releases)
+list breaking changes.
 
 ## Local development
 
@@ -38,11 +55,15 @@ hugo --gc --minify
 |---|---|
 | `content/en/`, `content/ru/` | Page content, one directory per language |
 | `config.toml` | Site config: languages, menus, params |
-| `config/_default/params.toml` | Ananke theme params (social networks, layout) — load-bearing |
-| `layouts/` | Templates; these override the theme |
+| `layouts/` | Templates that override the theme; only files that differ from [Ananke](https://github.com/theNewDynamic/gohugo-theme-ananke) live here — everything else comes from `themes/ananke` |
 | `assets/images/` | Photos, processed by Hugo (resized to WebP + `srcset`) |
 | `static/` | Files served verbatim: logos, favicon, PDFs |
 | `i18n/` | UI string translations |
+
+`static/images/gohugo-default-sample-hero-image.jpg` is an intentional 0-byte
+stub: Ananke ships an unused sample image at that path, and this project file
+shadows it so the real 280 KB original is not published. Unreferenced either
+way — safe to ignore.
 
 ## Adding content
 
