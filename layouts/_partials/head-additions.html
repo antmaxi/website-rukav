@@ -12,10 +12,25 @@
     - 'unsafe-inline' in style-src: Ananke/tachyons emit inline style attributes.
     - formspree.io in form-action: target of the contact form shortcode.
     - frame-src 'self': the pdf shortcode iframes same-origin PDFs.
+    - GoatCounter (when params.goatcounter is set): gc.zgo.at serves the
+      counter script, and the <code>.goatcounter.com origin receives the hit,
+      via an image beacon (img-src) or sendBeacon (connect-src). These are
+      added only when the param is set, so removing it cleans the CSP too.
 */}}
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-src 'self'; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'">
+{{- $gc := site.Params.goatcounter -}}
+{{- $gcOrigin := "" -}}
+{{- with $gc }}{{ $gcOrigin = printf "https://%s.goatcounter.com" . }}{{ end -}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'{{ with $gc }} https://gc.zgo.at{{ end }}; style-src 'self' 'unsafe-inline'; img-src 'self' data:{{ with $gcOrigin }} {{ . }}{{ end }}; font-src 'self'; frame-src 'self'; form-action 'self' https://formspree.io; connect-src 'self'{{ with $gcOrigin }} {{ . }}{{ end }}; base-uri 'self'; object-src 'none'">
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
+{{/*
+  GoatCounter, production only so local dev and preview builds are not counted.
+  Cookieless and PII-free by default, so no cookie/consent banner is required.
+*/}}
+{{ if and hugo.IsProduction $gc }}
+  <script data-goatcounter="{{ $gcOrigin }}/count" async src="//gc.zgo.at/count.js"></script>
+{{ end }}
 
 {{/*
   og:image. Hugo's built-in opengraph partial only emits this when a page sets

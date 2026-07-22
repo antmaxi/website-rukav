@@ -1,0 +1,15 @@
+{{/*
+  Full favicon set, overriding the theme's single-icon partial.
+
+  Generated from the logo as a navy square with the white wordmark, so the icon
+  is legible on both light and dark browser chrome — the theme default pointed
+  at the transparent black-text PNG, which was near-invisible on a dark tab and
+  gave no Apple touch / Android home-screen icon at all. Assets live in static/
+  (see the generation note in the commit) and are served from the site root.
+*/}}
+<link rel="icon" href="{{ urls.RelURL "favicon.ico" }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ urls.RelURL "favicon-32x32.png" }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ urls.RelURL "favicon-16x16.png" }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ urls.RelURL "apple-touch-icon.png" }}">
+<link rel="manifest" href="{{ urls.RelURL "site.webmanifest" }}">
+<meta name="theme-color" content="#001f3f">
