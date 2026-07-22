@@ -1,0 +1,34 @@
+{{/*
+  Embeds a Formsly (formsly.ch, Swiss-hosted) form as an iframe.
+
+  Formsly posts a SET_HEIGHT message so the embed can grow to fit its content;
+  we act on it only when it comes from the formsly.ch origin (the origin check
+  is not in Formsly's copy-paste snippet, but without it any page/frame could
+  resize the embed).
+
+  @param id  the Formsly form UUID, from the embed URL /f/<id>/embed
+
+  Needs https://formsly.ch in the CSP frame-src (see head-additions.html).
+
+    {{< formsly id="887d3295-57f7-45d4-a9c1-88876bea7d29" >}}
+*/}}
+{{- $id := .Get "id" -}}
+<iframe
+  id="formsly-embed"
+  src="https://formsly.ch/f/{{ $id }}/embed"
+  width="100%"
+  height="600"
+  frameborder="0"
+  style="border: none; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);"
+  allow="clipboard-write"
+  loading="lazy"
+  title="{{ lang.Translate "contactForm" }}"></iframe>
+<script>
+  window.addEventListener("message", function (e) {
+    if (e.origin !== "https://formsly.ch") return;
+    if (e.data && e.data.eventName === "SET_HEIGHT" && e.data.payload && e.data.payload.height) {
+      var iframe = document.getElementById("formsly-embed");
+      if (iframe) iframe.style.height = e.data.payload.height + "px";
+    }
+  });
+</script>

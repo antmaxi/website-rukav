@@ -4,4 +4,4 @@ description: "Get in touch with the RuKAV association in Zurich — send us a me
 omit_header_text: true
 ---
 
-{{< form-contact action="https://formspree.io/f/mojlpydq" >}}
+{{< formsly id="887d3295-57f7-45d4-a9c1-88876bea7d29" >}}

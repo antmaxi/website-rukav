@@ -1,6 +1,7 @@
 ---
 title: "Контакты"
 description: "Свяжитесь с ассоциацией РуКАВ в Цюрихе — отправьте нам сообщение, и мы ответим по электронной почте."
+omit_header_text: true
 ---
 
-{{< form-contact action="https://formspree.io/f/mojlpydq" >}}
+{{< formsly id="887d3295-57f7-45d4-a9c1-88876bea7d29" >}}

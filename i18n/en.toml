@@ -19,20 +19,8 @@ other = "What's in this {{ .Type }}"
 [related]
 other = "Related"
 
-[yourName]
-other = "Your Name"
-
-[emailAddress]
-other = "Email Address"
-
-[message]
-other = "Message"
-
-[emailRequiredNote]
-other = "An email address is required."
-
-[send]
-other = "Send"
+[contactForm]
+other = "Contact form"
 
 [taxonomyPageList]
 other = "Below you will find pages that utilize the taxonomy term “{{ .Title }}”"
