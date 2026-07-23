@@ -22,6 +22,9 @@ other = "Related"
 [contactForm]
 other = "Contact form"
 
+[membershipForm]
+other = "Membership application form"
+
 [taxonomyPageList]
 other = "Below you will find pages that utilize the taxonomy term “{{ .Title }}”"
 

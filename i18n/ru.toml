@@ -19,6 +19,9 @@ other = "Схожие"
 [contactForm]
 other = "Форма обратной связи"
 
+[membershipForm]
+other = "Форма заявки на вступление"
+
 [taxonomyPageList]
 other = "Ниже вы найдете страницы, на которых используется термин таксономии “{{ .Title }}”"
 

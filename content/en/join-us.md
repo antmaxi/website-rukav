@@ -22,4 +22,6 @@ the mission of the RuKAV can become its passive member
     The Board appoints such a person according to the Article IX
 
 
--> To join, leave a request in the [Google form](https://forms.gle/3D6PtwLztK7kTvC28)
+To join, fill in the application form below:
+
+{{< formsly id="2dd4410e-fc87-49d7-9233-7665b7adbfd2" titleKey="membershipForm" >}}

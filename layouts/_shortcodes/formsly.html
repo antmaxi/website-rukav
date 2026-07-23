@@ -6,13 +6,19 @@
   is not in Formsly's copy-paste snippet, but without it any page/frame could
   resize the embed).
 
-  @param id  the Formsly form UUID, from the embed URL /f/<id>/embed
+  @param id        the Formsly form UUID, from the embed URL /f/<id>/embed
+  @param titleKey  i18n key for the iframe's accessible title; defaults to
+                   "contactForm". Pass e.g. "membershipForm" on the join page
+                   so a screen reader announces what the form actually is.
 
   Needs https://formsly.ch in the CSP frame-src (see head-additions.html).
+  One embed per page: the iframe id is fixed, so two on one page would clash.
 
     {{< formsly id="887d3295-57f7-45d4-a9c1-88876bea7d29" >}}
+    {{< formsly id="2dd4410e-fc87-49d7-9233-7665b7adbfd2" titleKey="membershipForm" >}}
 */}}
 {{- $id := .Get "id" -}}
+{{- $titleKey := .Get "titleKey" | default "contactForm" -}}
 <iframe
   id="formsly-embed"
   src="https://formsly.ch/f/{{ $id }}/embed"
@@ -22,7 +28,7 @@
   style="border: none; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);"
   allow="clipboard-write"
   loading="lazy"
-  title="{{ lang.Translate "contactForm" }}"></iframe>
+  title="{{ lang.Translate $titleKey }}"></iframe>
 <script>
   window.addEventListener("message", function (e) {
     if (e.origin !== "https://formsly.ch") return;
