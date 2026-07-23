@@ -44,29 +44,14 @@ enableRobotsTXT = true
       weight = 4
 
     [[languages.en.menu.main]]
-      name = "Board"
-      url = "/en/board/"
-      weight = 5
-
-    [[languages.en.menu.main]]
-      name = "Documents"
-      url = "/en/documents/"
-      weight = 6
-
-    [[languages.en.menu.main]]
-      name = "Links"
-      url = "/en/links/"
-      weight = 7
-
-    [[languages.en.menu.main]]
       name = "Support us"
       url = "/en/donate/"
-      weight = 8
+      weight = 5
 
     [[languages.en.menu.main]]
       name = "Contact"
       url = "/en/contact/"
-      weight = 9
+      weight = 6
 
 
 
@@ -97,29 +82,14 @@ enableRobotsTXT = true
       weight = 4
 
     [[languages.ru.menu.main]]
-      name = "Правление"
-      url = "/ru/board/"
-      weight = 5
-
-    [[languages.ru.menu.main]]
-      name = "Документы"
-      url = "/ru/documents/"
-      weight = 6
-
-  [[languages.ru.menu.main]]
-      name = "Ссылки"
-      url = "/ru/links/"
-      weight = 7
-
-    [[languages.ru.menu.main]]
       name = "Поддержать"
       url = "/ru/donate/"
-      weight = 8
+      weight = 5
 
    [[languages.ru.menu.main]]
       name = "Контакты"
       url = "/ru/contact/"
-      weight = 9
+      weight = 6
 
 
 

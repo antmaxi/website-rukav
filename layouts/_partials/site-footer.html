@@ -1,0 +1,26 @@
+{{/*
+  Footer override: adds links to pages that used to be in the main nav (Board,
+  Documents, Links) so they stay reachable now that the nav only carries the
+  primary sections (Home/About/Events/Join us/Support us/Contact). Documents is
+  also linked inline from About's "Goals" paragraph; Board and Links had no
+  other link into them, so this is the only path to them without this row.
+
+  Uses site.GetPage rather than hardcoded per-language strings so the link
+  text always matches each page's own title, in whichever language is current.
+*/}}
+{{- $resourcePages := slice (site.GetPage "board") (site.GetPage "documents") (site.GetPage "links") -}}
+<footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex flex-wrap items-center justify-between">
+    <div class="flex flex-wrap items-center">
+      <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="{{ .Site.Home.Permalink }}">
+        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006" }} {{ end }}
+      </a>
+      {{- range $resourcePages }}
+        {{- with . }}
+          <a class="f6 fw4 hover-white white-70 pv2 ph3 no-underline" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{- end }}
+      {{- end }}
+    </div>
+    <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
+  </div>
+</footer>
