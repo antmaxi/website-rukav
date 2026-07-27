@@ -11,9 +11,10 @@
       scripts are inline (see theme-switcher.html, site-scripts.html).
     - 'unsafe-inline' in style-src: Ananke/tachyons emit inline style attributes.
     - frame-src: 'self' for the pdf shortcode's same-origin PDFs, plus
-      formsly.ch for the Formsly contact-form embed. The form itself submits
-      inside that iframe (a different origin), so it is not governed by this
-      page's form-action, which is now just 'self'.
+      formsly.ch for the Formsly contact-form embed, and calendar.google.com
+      for the home-page calendar widget. The form itself submits inside that
+      iframe (a different origin), so it is not governed by this page's
+      form-action, which is now just 'self'.
     - GoatCounter (when params.goatcounter is set): gc.zgo.at serves the
       counter script, and the <code>.goatcounter.com origin receives the hit,
       via an image beacon (img-src) or sendBeacon (connect-src). These are
@@ -22,7 +23,7 @@
 {{- $gc := site.Params.goatcounter -}}
 {{- $gcOrigin := "" -}}
 {{- with $gc }}{{ $gcOrigin = printf "https://%s.goatcounter.com" . }}{{ end -}}
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'{{ with $gc }} https://gc.zgo.at{{ end }}; style-src 'self' 'unsafe-inline'; img-src 'self' data:{{ with $gcOrigin }} {{ . }}{{ end }}; font-src 'self'; frame-src 'self' https://formsly.ch; form-action 'self'; connect-src 'self'{{ with $gcOrigin }} {{ . }}{{ end }}; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'{{ with $gc }} https://gc.zgo.at{{ end }}; style-src 'self' 'unsafe-inline'; img-src 'self' data:{{ with $gcOrigin }} {{ . }}{{ end }}; font-src 'self'; frame-src 'self' https://formsly.ch https://calendar.google.com; form-action 'self'; connect-src 'self'{{ with $gcOrigin }} {{ . }}{{ end }}; base-uri 'self'; object-src 'none'">
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
 

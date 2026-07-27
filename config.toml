@@ -152,3 +152,8 @@ custom_css = ["css/custom.css"]
   showUpcoming = true
   maxDisplay = 5
   dateFormat = "2 January, 2006"
+
+# Public Google Calendar embedded on the home page.
+[params.calendar]
+  id = "rukav.swiss@gmail.com"
+  timezone = "Europe/Zurich"

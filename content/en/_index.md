@@ -15,4 +15,6 @@ political or religious affiliation.
 {{< cta href="events/" primary="true" >}}See our events{{< /cta >}}
 {{< cta href="join-us/" >}}Join us{{< /cta >}}
 
+{{< google-calendar >}}
+
 [Read more about the association and its goals →]({{< relref "about.md" >}})

@@ -15,4 +15,6 @@ featured_image: "images/2025-07-19_Foundation-group-with-smiles.png"
 {{< cta href="events/" primary="true" >}}Наши мероприятия{{< /cta >}}
 {{< cta href="join-us/" >}}Присоединиться{{< /cta >}}
 
+{{< google-calendar >}}
+
 [Подробнее об ассоциации и её целях →]({{< relref "about.md" >}})

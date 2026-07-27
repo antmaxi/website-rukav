@@ -114,6 +114,34 @@ a.no-underline {
   display: block;
 }
 
+/* --- Google Calendar embed -----------------------------------------------
+   Google’s embed has no dark theme and cross-origin rules block styling
+   inside the iframe. In dark mode (the site default) we approximate one with
+   a colour filter; light mode leaves the native calendar UI untouched.
+   -------------------------------------------------------------------------- */
+
+.calendar-embed {
+  margin: 2rem 0 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: var(--bg-color);
+}
+
+.calendar-embed iframe {
+  display: block;
+  border: 0;
+  background: transparent;
+}
+
+html:not([data-theme="light"]) .calendar-embed {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+html:not([data-theme="light"]) .calendar-embed iframe {
+  filter: invert(0.92) hue-rotate(180deg) contrast(0.95);
+}
+
 /* --- Call-to-action buttons ---------------------------------------------- */
 
 .cta-button {
