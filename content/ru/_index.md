@@ -17,4 +17,4 @@ featured_image: "images/2025-07-19_Foundation-group-with-smiles.png"
 
 {{< google-calendar >}}
 
-[Подробнее об ассоциации и её целях →]({{< relref "about.md" >}})
+[Подробнее об ассоциации и её целях →]({{< relref "faq/_index.md" >}}#about)

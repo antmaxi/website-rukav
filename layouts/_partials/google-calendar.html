@@ -1,0 +1,23 @@
+{{/*
+  Embeds a public Google Calendar as an iframe.
+
+  Calendar settings live in [params.calendar] in config.toml. Optional dict keys:
+  src, timezone, height.
+*/}}
+{{- $cfg := site.Params.calendar -}}
+{{- $src := $cfg.id | default "rukav.swiss@gmail.com" -}}
+{{- $tz := $cfg.timezone | default "Europe/Zurich" -}}
+{{- $height := "600" -}}
+{{- with .src }}{{ $src = . }}{{ end -}}
+{{- with .timezone }}{{ $tz = . }}{{ end -}}
+{{- with .height }}{{ $height = . }}{{ end -}}
+<div class="calendar-embed">
+  <iframe
+    src="https://calendar.google.com/calendar/embed?src={{ $src | urlquery }}&amp;ctz={{ $tz | urlquery }}"
+    width="100%"
+    height="{{ $height }}"
+    frameborder="0"
+    scrolling="no"
+    loading="lazy"
+    title="{{ lang.Translate "calendarEmbed" }}"></iframe>
+</div>

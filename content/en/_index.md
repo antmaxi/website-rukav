@@ -17,4 +17,4 @@ political or religious affiliation.
 
 {{< google-calendar >}}
 
-[Read more about the association and its goals →]({{< relref "about.md" >}})
+[Read more about the association and its goals →]({{< relref "faq/_index.md" >}}#about)

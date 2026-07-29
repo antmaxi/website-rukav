@@ -18,6 +18,10 @@
   --button-bg: #000000;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body, .bg-near-white {
   background-color: var(--bg-color) !important;
   color: var(--text-color);
@@ -55,6 +59,18 @@ body, .bg-near-white {
   color: var(--text-color) !important;
 }
 
+/* Content links: light blue in dark mode, standard blue in light mode. */
+html:not([data-theme="light"]) .nested-links a,
+html:not([data-theme="light"]) .nested-links a:link,
+html:not([data-theme="light"]) .nested-links a:visited {
+  color: #96ccff !important;
+}
+
+html:not([data-theme="light"]) .nested-links a:hover,
+html:not([data-theme="light"]) .nested-links a:focus {
+  color: #cdecff !important;
+}
+
 /* Override Ananke classes to use CSS variables */
 .white-90, .light-silver, .near-black, .black, .dark-gray, .mid-gray, .black-80, .black-70, .silver {
   color: var(--text-color) !important;
@@ -63,6 +79,48 @@ body, .bg-near-white {
 .white-80, .white-70 {
   color: var(--text-color) !important;
   opacity: 0.8;
+}
+
+/* Featured-image headers keep white text for nav, titles, and descriptions. */
+header.cover .white-90,
+header.cover .white-80,
+header.cover .white-70,
+header[style*="background-image"] .white-90,
+header[style*="background-image"] .white-80,
+header[style*="background-image"] .white-70 {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1;
+}
+
+header.cover .white-80,
+header[style*="background-image"] .white-80 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+header.cover .white-70,
+header[style*="background-image"] .white-70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+header.cover a.white-90,
+header.cover a.hover-white,
+header[style*="background-image"] a.white-90,
+header[style*="background-image"] a.hover-white {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+header.cover a.hover-white:hover,
+header.cover a.hover-white:focus,
+header[style*="background-image"] a.hover-white:hover,
+header[style*="background-image"] a.hover-white:focus {
+  color: #ffffff !important;
+}
+
+header.cover .nav-toggle,
+header.cover #theme-toggle,
+header[style*="background-image"] .nav-toggle,
+header[style*="background-image"] #theme-toggle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hover-white:hover {
@@ -142,6 +200,28 @@ html:not([data-theme="light"]) .calendar-embed iframe {
   filter: invert(0.92) hue-rotate(180deg) contrast(0.95);
 }
 
+/* --- Site hero (home featured image) ---------------------------------------
+   Shorter band and a lower focal point so title text sits over the lower part
+   of the group photo instead of across people's faces. */
+header.cover.site-hero,
+header.site-hero[style*="background-image"] {
+  background-position: center 38% !important;
+}
+
+header.cover.site-hero .tc-l.pv4,
+header.site-hero[style*="background-image"] .tc-l.pv4 {
+  padding-top: 1.35rem;
+  padding-bottom: 1.35rem;
+}
+
+@media screen and (min-width: 60em) {
+  header.cover.site-hero .pv6-l,
+  header.site-hero[style*="background-image"] .pv6-l {
+    padding-top: 5.35rem;
+    padding-bottom: 5.35rem;
+  }
+}
+
 /* --- Call-to-action buttons ---------------------------------------------- */
 
 .cta-button {
@@ -166,6 +246,89 @@ html:not([data-theme="light"]) .calendar-embed iframe {
 .cta-button--primary {
   background-color: var(--button-bg);
   border-color: var(--button-bg);
+}
+
+/* --- FAQ page ------------------------------------------------------------ */
+
+.faq-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
+  background-color: var(--bg-color);
+}
+
+.faq-content > h2 {
+  scroll-margin-top: 5rem;
+  padding-top: 2rem;
+  margin-top: 0;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+}
+
+.faq-content > h2:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.faq-content > h2:target {
+  color: var(--link-hover-color);
+}
+
+.faq-subnav > .faq-subnav__link:any-link {
+  display: inline-block;
+  color: #cdecff !important;
+  text-decoration: underline !important;
+  white-space: nowrap;
+  opacity: 1 !important;
+  transition: color 0.15s ease-in;
+}
+
+.faq-subnav > .faq-subnav__link:any-link:hover,
+.faq-subnav > .faq-subnav__link:any-link:focus {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .faq-subnav > .faq-subnav__link:any-link {
+  color: #357edd !important;
+}
+
+[data-theme="light"] .faq-subnav > .faq-subnav__link:any-link:hover,
+[data-theme="light"] .faq-subnav > .faq-subnav__link:any-link:focus {
+  color: #1a5fb4 !important;
+}
+
+.faq-subnav__link--active {
+  font-weight: 600;
+}
+
+/* --- Home page events (infinite scroll) ---------------------------------- */
+
+.home-events__sentinel {
+  height: 1px;
+}
+
+/* Featured image sits beside the text; without flex-start the image column
+   stretches to match a tall summary and the thumbnail looks distorted. */
+.home-events .flex-row-ns {
+  align-items: flex-start;
+}
+
+.home-events .w-40-ns img.img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Summaries can still pick up inline images from page content; cap them here. */
+.home-events .nested-links img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* --- Header navigation ---------------------------------------------------
@@ -247,6 +410,28 @@ html:not([data-theme="light"]) .calendar-embed iframe {
 .nav-collapse-content .nav-menu {
   margin: 0;
   padding-left: 0;
+}
+
+.nav-menu__link.nav-menu__link--active {
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
+html:not([data-theme="light"]) .nav-menu__link--active {
+  color: #cdecff !important;
+  text-decoration-color: #cdecff;
+}
+
+[data-theme="light"] .nav-menu__link--active {
+  color: #357edd !important;
+  text-decoration-color: #357edd;
+}
+
+header.cover .nav-menu__link--active,
+header[style*="background-image"] .nav-menu__link--active {
+  color: #cdecff !important;
+  text-decoration-color: #cdecff;
 }
 
 /* The theme's own default is 32px (.ananke-socials a .icon svg in

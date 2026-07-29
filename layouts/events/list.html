@@ -28,6 +28,10 @@
       {{- .Content -}}
     </section>
 
+    <section class="ph3 ph5-l center measure-wide">
+      {{ partial "google-calendar.html" dict }}
+    </section>
+
     {{ with $recurring }}
       {{ partial "events-group.html" (dict "title" (lang.Translate "eventsRegular") "pages" . "dateFormat" $dateFormat "showDate" false) }}
     {{ end }}

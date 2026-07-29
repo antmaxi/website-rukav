@@ -32,12 +32,28 @@
       {{ partial "theme-switcher.html" . }}
       {{ partials.Include "i18nlist.html" . }}
       {{ if .Site.Menus.main }}
+        {{- $homeURL := strings.TrimSuffix "/" $.Site.Home.RelPermalink -}}
+        {{- $currentURL := strings.TrimSuffix "/" $.RelPermalink -}}
         <ul class="nav-menu {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
           {{ range .Site.Menus.main }}
+          {{- $menuURL := strings.TrimSuffix "/" .URL -}}
+          {{- $isActive := false -}}
+          {{- if .Page -}}
+            {{- if .Page.IsHome -}}
+              {{- $isActive = $.IsHome -}}
+            {{- else -}}
+              {{- $isActive = or ($.Eq .Page) ($.IsDescendant .Page) -}}
+            {{- end -}}
+          {{- else if $.IsHome -}}
+            {{- $isActive = eq $menuURL $homeURL -}}
+          {{- else if ne $menuURL $homeURL -}}
+            {{- $isActive = or (eq $currentURL $menuURL) (hasPrefix $currentURL (printf "%s/" $menuURL)) -}}
+          {{- end -}}
           <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
-            <a class="hover-white white-90 no-underline" href="{{ .URL }}"
+            <a class="hover-white white-90 no-underline nav-menu__link{{ if $isActive }} nav-menu__link--active{{ end }}" href="{{ .URL }}"
               {{- with .Params.newtab }} target="_blank" rel="noopener noreferrer"{{ end }}
-              title="{{ lang.Translate "pageTitle" . }}">
+              title="{{ lang.Translate "pageTitle" . }}"
+              {{- if $isActive }} aria-current="page"{{ end -}}>
               {{ .Name }}
             </a>
           </li>

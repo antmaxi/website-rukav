@@ -25,33 +25,28 @@ enableRobotsTXT = true
 
     [[languages.en.menu.main]]
       name = "Home"
-      url = "/en/"
+      pageRef = "/"
       weight = 1
 
     [[languages.en.menu.main]]
-      name = "About"
-      url = "/en/about/"
+      name = "Events"
+      pageRef = "/events"
       weight = 2
 
     [[languages.en.menu.main]]
-      name = "Events"
-      url = "/en/events/"
+      name = "Join us"
+      pageRef = "/join-us"
       weight = 3
 
     [[languages.en.menu.main]]
-      name = "Join us"
-      url = "/en/join-us/"
+      name = "Support us"
+      pageRef = "/donate"
       weight = 4
 
     [[languages.en.menu.main]]
-      name = "Support us"
-      url = "/en/donate/"
+      name = "FAQ"
+      pageRef = "/faq"
       weight = 5
-
-    [[languages.en.menu.main]]
-      name = "Contact"
-      url = "/en/contact/"
-      weight = 6
 
 
 
@@ -63,33 +58,28 @@ enableRobotsTXT = true
 
     [[languages.ru.menu.main]]
       name = "Главная"
-      url = "/ru/"
+      pageRef = "/"
       weight = 1
 
     [[languages.ru.menu.main]]
-      name = "Об ассоциации"
-      url = "/ru/about/"
+      name = "Мероприятия"
+      pageRef = "/events"
       weight = 2
 
     [[languages.ru.menu.main]]
-      name = "Мероприятия"
-      url = "/ru/events/"
+      name = "Присоединиться"
+      pageRef = "/join-us"
       weight = 3
 
     [[languages.ru.menu.main]]
-      name = "Присоединиться"
-      url = "/ru/join-us/"
+      name = "Поддержать"
+      pageRef = "/donate"
       weight = 4
 
     [[languages.ru.menu.main]]
-      name = "Поддержать"
-      url = "/ru/donate/"
+      name = "FAQ"
+      pageRef = "/faq"
       weight = 5
-
-   [[languages.ru.menu.main]]
-      name = "Контакты"
-      url = "/ru/contact/"
-      weight = 6
 
 
 
@@ -121,7 +111,9 @@ verbatim_images = ["images/rukav_bank-qr-code.png"]
 description = "RuKAV — the Russian-speaking Cultural and Academic Association in Zurich, Switzerland. Events, community, and support for Russian-speaking students and academics."
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-dark-blue"
+featured_image_class = "cover site-hero"
 recent_posts_number = 3
+home_events_batch_size = 3
 
 # GoatCounter analytics: cookieless, no PII, no cookie banner needed. The value
 # is the account code -> https://<code>.goatcounter.com. The script is emitted
@@ -153,7 +145,7 @@ custom_css = ["css/custom.css"]
   maxDisplay = 5
   dateFormat = "2 January, 2006"
 
-# Public Google Calendar embedded on the home page.
+# Public Google Calendar embedded on the home and events pages.
 [params.calendar]
   id = "rukav.swiss@gmail.com"
   timezone = "Europe/Zurich"

@@ -1,0 +1,40 @@
+{{/*
+  In-page section navigation for the FAQ page.
+*/}}
+<style>
+  html:not([data-theme="light"]) .faq-subnav > .faq-subnav__link:any-link {
+    color: #cdecff !important;
+    text-decoration: underline !important;
+    opacity: 1 !important;
+  }
+</style>
+<nav class="faq-subnav nested-links mb4" aria-label="{{ lang.Translate "faqSubnav" }}">
+  {{- range .Params.faq_sections }}
+  <a href="#{{ .id }}"
+     class="faq-subnav__link"
+     data-faq-section="{{ .id }}">{{ .title }}</a>
+  {{- end }}
+</nav>
+<script>
+  (function () {
+    var links = document.querySelectorAll(".faq-subnav__link[data-faq-section]");
+    if (!links.length) return;
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle(
+          "faq-subnav__link--active",
+          link.getAttribute("data-faq-section") === id
+        );
+      });
+    }
+
+    function syncFromHash() {
+      var id = (location.hash || "#about").slice(1);
+      setActive(id);
+    }
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+  })();
+</script>

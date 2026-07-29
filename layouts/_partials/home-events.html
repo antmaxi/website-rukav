@@ -1,0 +1,58 @@
+{{/*
+  Home page events list. The first few render immediately; older events load in
+  batches as the reader scrolls near the sentinel at the bottom.
+*/}}
+{{- $events := .events -}}
+{{- $initial := .initial | default 3 -}}
+{{- $batch := .batch | default 3 -}}
+
+<section class="home-events pa3 pa4-ns w-100 w-70-ns center" data-batch="{{ $batch }}">
+  <div class="home-events__list w-100 mw8">
+    {{- range $i, $page := $events -}}
+    <div class="home-events__item w-100 mb4 relative{{ if ge $i $initial }} home-events__item--deferred{{ end }}"
+         {{- if ge $i $initial }} hidden{{ end -}}>
+      {{ $page.Render "summary-with-image" }}
+    </div>
+    {{- end -}}
+  </div>
+  {{- if gt (len $events) $initial -}}
+  <div class="home-events__sentinel" aria-hidden="true"></div>
+  {{- end -}}
+</section>
+
+<script>
+  (function () {
+    var root = document.querySelector(".home-events");
+    if (!root) return;
+
+    var deferred = root.querySelectorAll(".home-events__item--deferred");
+    if (!deferred.length) return;
+
+    var batch = parseInt(root.getAttribute("data-batch") || "3", 10);
+    var index = 0;
+    var sentinel = root.querySelector(".home-events__sentinel");
+
+    function revealNext() {
+      for (var i = 0; i < batch && index < deferred.length; i++, index++) {
+        deferred[index].hidden = false;
+      }
+      if (index >= deferred.length && observer) {
+        observer.disconnect();
+        if (sentinel) sentinel.remove();
+      }
+    }
+
+    if (!sentinel || !("IntersectionObserver" in window)) {
+      while (index < deferred.length) revealNext();
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) revealNext();
+      });
+    }, { rootMargin: "240px" });
+
+    observer.observe(sentinel);
+  })();
+</script>

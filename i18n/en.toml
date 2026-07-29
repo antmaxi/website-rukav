@@ -56,3 +56,6 @@ other = "No events to show yet."
 
 [calendarEmbed]
 other = "RuKAV event calendar"
+
+[faqSubnav]
+other = "FAQ sections"
