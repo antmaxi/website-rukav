@@ -325,8 +325,10 @@ header.site-hero[style*="background-image"] .tc-l.pv4 {
   display: block;
 }
 
-/* Summaries can still pick up inline images from page content; cap them here. */
-.home-events .nested-links img {
+/* Markdown content images carry width/height for layout stability; on narrow
+   viewports only max-width shrinks the used width, so height must be auto or
+   the box keeps the declared height and looks stretched tall (event pages, QR). */
+.nested-links img {
   max-width: 100%;
   height: auto;
 }
