@@ -1,0 +1,14 @@
+{{- /*
+  Side-by-side club schedules on wide screens; stacks on mobile. Wrap two or more
+  club-column shortcodes. Inner markdown uses markdownify; do not nest {{< gallery >}}
+  here (gallery HTML gets escaped). Use inline markdown images instead — styled in
+  custom.css like the gallery shortcode.
+
+    {{< club-columns >}}
+    {{< club-column title="Reading club" >}}...{{< /club-column >}}
+    {{< club-column title="Philosophy club" >}}...{{< /club-column >}}
+    {{< /club-columns >}}
+*/ -}}
+<div class="club-columns flex flex-column flex-row-ns">
+  {{ .Inner }}
+</div>

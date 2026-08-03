@@ -1,0 +1,7 @@
+{{- $title := .Get "title" -}}
+<div class="club-columns__col w-100 w-50-ns mb4 mb0-ns">
+  {{- with $title -}}
+  <h2 class="club-columns__title f4 fw6 mt0 mb3">{{ . }}</h2>
+  {{- end -}}
+  <div class="club-columns__body nested-copy-line-height">{{ .Inner | markdownify }}</div>
+</div>

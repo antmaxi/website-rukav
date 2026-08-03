@@ -1,11 +1,14 @@
 ---
 date: 2026-02-27T00:00:00-04:00
-description: "Our monthly reading club: one book a month, discussed together. See the schedule of upcoming titles."
+description: "Monthly reading club and, since August 2026, a monthly philosophy club — schedules and upcoming titles."
 recurring: true
 featured_image: "images/book-club-generic.png"
 tags: []
 title: "Reading club"
 ---
+
+{{< club-columns >}}
+{{< club-column title="Reading club" >}}
 
 We organize a monthly reading club.
 
@@ -23,9 +26,17 @@ We organize a monthly reading club.
 
 27.02.2026 - Fyodor Dostoevsky "Poor Folk"
 
-{{< gallery >}}
 ![Poster for Summa Technologiae](images/book-club_2026-06_Summa-Technologiae.jpg)
 ![Poster for Chevengur](images/book-club_Chevengur.jpg)
 ![Poster for Mother-night](images/book-club_Mother-night.jpg)
 ![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
-{{< /gallery >}}
+
+{{< /club-column >}}
+{{< club-column title="Philosophy club" >}}
+
+Since August 2026 we also meet once a month for a philosophy club.
+
+21.08.2026 - Erich Fromm "The Sane Society"
+
+{{< /club-column >}}
+{{< /club-columns >}}

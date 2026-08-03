@@ -446,6 +446,52 @@ footer .ananke-social-link .icon svg {
   height: 20px;
 }
 
+/* --- Reading / philosophy club columns (event page) ----------------------- */
+
+.club-columns {
+  align-items: flex-start;
+  gap: 0;
+  margin: 1.5rem 0;
+}
+
+.club-columns__col:first-child {
+  padding-right: 0;
+}
+
+@media screen and (min-width: 60em) {
+  .club-columns__col:first-child {
+    padding-right: 1.5rem;
+    border-right: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+  }
+
+  .club-columns__col:last-child {
+    padding-left: 1.5rem;
+  }
+}
+
+.club-columns__title {
+  color: var(--text-color);
+}
+
+.club-columns__body img {
+  display: inline-block;
+  width: 110px;
+  max-width: 40vw;
+  height: auto;
+  margin: 0 0.5rem 0.5rem 0;
+  vertical-align: top;
+}
+
+.club-columns__body p:has(> img:only-child) {
+  display: inline;
+}
+
+@media screen and (min-width: 30em) {
+  .club-columns__body img {
+    width: 140px;
+  }
+}
+
 /* --- {{< gallery >}} shortcode --------------------------------------------
    The image render hook adds no class or size cap to content images, so a run
    of them (e.g. book covers) rendered at their near-full intrinsic width,

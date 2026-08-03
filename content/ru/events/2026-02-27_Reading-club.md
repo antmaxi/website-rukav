@@ -1,11 +1,14 @@
 ---
 date: 2026-02-27T00:00:00-04:00
-description: "Наш ежемесячный книжный клуб: одна книга в месяц и совместное обсуждение. Расписание ближайших книг внутри."
+description: "Ежемесячный читательский клуб и с августа 2026 года — ежемесячный философский клуб: расписание и ближайшие темы."
 recurring: true
 featured_image: "images/book-club-generic.png"
 tags: []
 title: "Читательский клуб"
 ---
+
+{{< club-columns >}}
+{{< club-column title="Читательский клуб" >}}
 
 Мы проводим ежемесячный читательский клуб.
 
@@ -23,11 +26,17 @@ title: "Читательский клуб"
 
 27.02.2026 - Фёдор Достоевский "Бедные люди"
 
-{{< gallery >}}
 ![Poster for Summa Technologiae](images/book-club_2026-06_Summa-Technologiae.jpg)
 ![Poster for Chevengur](images/book-club_Chevengur.jpg)
 ![Poster for Mother-night](images/book-club_Mother-night.jpg)
 ![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
-{{< /gallery >}}
 
+{{< /club-column >}}
+{{< club-column title="Философский клуб" >}}
 
+С августа 2026 года мы также встречаемся раз в месяц на философский клуб.
+
+21.08.2026 - Эрих Фромм «Здоровое общество»
+
+{{< /club-column >}}
+{{< /club-columns >}}
