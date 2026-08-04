@@ -1,9 +1,10 @@
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex flex-wrap items-center justify-between">
     <div class="flex flex-wrap items-center">
-      <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="{{ .Site.Home.Permalink }}">
-        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006" }} {{ end }}
-      </a>
+      <span class="f4 fw4 white-70 dn dib-ns pv2 ph3">
+        &copy; RuKAV 2026 | Developed by
+        <a class="hover-white white-70 underline" href="https://github.com/antmaxi" rel="noopener noreferrer" target="_blank">antmaxi</a>
+      </span>
     </div>
     <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
   </div>
