@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "About RuKAV, how to contact us, board members, official documents, and useful links for life in Zurich and Switzerland."
+description: "About RuKAV, how to contact us, board members, official documents, useful links, and privacy / impressum."
 faq_sections:
   - id: about
     title: About
@@ -12,16 +12,21 @@ faq_sections:
     title: Documents
   - id: links
     title: Useful links
+  - id: privacy
+    title: Privacy & Impressum
 aliases:
   - /en/about/
   - /en/contact/
   - /en/board/
   - /en/documents/
   - /en/links/
+  - /en/privacy/
+  - /en/impressum/
   - /en/faq/contact/
   - /en/faq/board/
   - /en/faq/documents/
   - /en/faq/links/
+  - /en/faq/privacy/
 ---
 
 ## About {#about}
@@ -86,3 +91,27 @@ Statutes from 19.07.2025
 
 1. (in Russian) [Guide on the life in Switzerland](https://ru-ch.github.io/faq), and
 separately its [part for students](https://ru-ch.github.io/faq/inbox/%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC-%D0%B8-%D0%BF%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0%D1%8E%D1%89%D0%B8%D0%BC.html)
+
+## Privacy & Impressum {#privacy}
+
+### Impressum
+
+**RuKAV** (German: *Russischsprechender Kultureller und Akademischer Verein*; English: *Russian-speaking Cultural and Academic Association*) is a non-profit association under Swiss law, headquartered and registered in Zurich, Switzerland (founded 19.07.2025).
+
+| Field | Value |
+|---|---|
+| Seat | 8000 Zürich, Switzerland |
+| Email | [contact.cause143@simplelogin.com](mailto:contact.cause143@simplelogin.com) |
+| Responsible for content | The Board (President: Anton M.) |
+
+### Privacy
+
+This website is operated by RuKAV. We process personal data only as described below, in line with the Swiss Federal Act on Data Protection (FADP).
+
+**Contact and membership forms.** Forms on this site are embedded from [Formsly](https://formsly.ch) (hosted in Switzerland). Data you submit (for example name and email) is transmitted to Formsly and made available to us so we can answer your enquiry or process a membership application. We do not use this data for marketing.
+
+**Analytics.** We use [GoatCounter](https://www.goatcounter.com/), a privacy-friendly analytics service that does not set cookies and does not collect personal data. No cookie or consent banner is required.
+
+**Embedded content.** The events calendar is embedded from Google Calendar. Links to Instagram and YouTube lead to those platforms, which process data under their own policies when you visit them.
+
+**Your rights.** You may request access to, correction of, or deletion of your personal data, and object to processing, by contacting us at [contact.cause143@simplelogin.com](mailto:contact.cause143@simplelogin.com).
