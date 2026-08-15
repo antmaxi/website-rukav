@@ -1,15 +1,9 @@
 {{/*
   One titled group of events on the events listing.
 
-  @param title       heading for the group
-  @param pages       page collection to render
-  @param dateFormat  Go date layout for the event date
-  @param showDate    whether to print the date (false for recurring events,
-                     whose front matter date is a start date, not an occurrence)
+  @param title  heading for the group
+  @param pages  page collection to render
 */}}
-{{ $showDate := .showDate }}
-{{ $dateFormat := .dateFormat }}
-
 <section class="mt4 mt5-ns">
   <h2 class="f3 fw2 ph3 ph5-l {{ site.Params.text_color | default "mid-gray" }}">{{ .title }}</h2>
 
@@ -27,7 +21,7 @@
                    the current (listing) page. $page, captured above, is the
                    actual event. */}}
               <a href="{{ $page.RelPermalink }}" class="db grow">
-                <img src="{{ . }}" class="img" alt="{{ $page.Title }}" loading="lazy" decoding="async">
+                <img src="{{ . }}" class="img" alt="" loading="lazy" decoding="async">
               </a>
             {{ end }}
 
@@ -35,13 +29,7 @@
               <a href="{{ .RelPermalink }}" class="color-inherit dim link">{{ .Title }}</a>
             </h3>
 
-            {{ if $showDate }}
-              {{/* time.Format localises month names to the site language;
-                   .Date.Format would print English months on the Russian site. */}}
-              <time class="f6 db mb2 mid-gray" datetime="{{ .Date.Format "2006-01-02" }}">
-                {{ time.Format $dateFormat .Date }}
-              </time>
-            {{ end }}
+            {{ partials.Include "event-meta.html" . }}
 
             <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
               {{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}

@@ -1,0 +1,141 @@
+{{/*
+	JSON-LD for Organization + WebSite + WebPage, and Event / EventSeries on
+	event pages. Replaces Hugo's built-in schema partial, which only emitted
+	itemprop microdata and no Event markup.
+*/}}
+{{- $base := site.BaseURL -}}
+{{- $orgID := printf "%s#organization" $base -}}
+{{- $siteID := printf "%s#website" $base -}}
+{{- $cfg := site.Params.organization -}}
+
+{{- $langs := slice -}}
+{{- range site.Home.AllTranslations -}}
+	{{- $langs = $langs | append (.Language.Locale | default .Language.Lang) -}}
+{{- end -}}
+
+{{- $sameAs := slice -}}
+{{- with site.Params.ananke.social.instagram.username -}}
+	{{- $sameAs = $sameAs | append (printf "https://www.instagram.com/%s/" .) -}}
+{{- end -}}
+{{- with site.Params.ananke.social.youtube.username -}}
+	{{- $sameAs = $sameAs | append (printf "https://www.youtube.com/@%s" .) -}}
+{{- end -}}
+
+{{- $address := dict
+	"@type" "PostalAddress"
+	"addressLocality" ($cfg.addressLocality | default "Zürich")
+	"postalCode" ($cfg.postalCode | default "8000")
+	"addressCountry" ($cfg.addressCountry | default "CH")
+-}}
+
+{{- $org := dict
+	"@type" "NGO"
+	"@id" $orgID
+	"name" site.Title
+	"legalName" ($cfg.legalName | default "Russischsprechender Kultureller und Akademischer Verein")
+	"alternateName" ($cfg.alternateName | default "РуКАВ")
+	"url" $base
+	"foundingDate" ($cfg.foundingDate | default "2025-07-19")
+	"address" $address
+	"areaServed" (dict "@type" "City" "name" ($cfg.addressLocality | default "Zürich"))
+	"knowsLanguage" (slice "ru" "en" "de")
+-}}
+{{- with $cfg.email -}}
+	{{- $org = merge $org (dict "email" .) -}}
+{{- end -}}
+{{- with $cfg.logo | default site.Params.favicon -}}
+	{{- $org = merge $org (dict "logo" (. | absURL)) -}}
+{{- end -}}
+{{- if $sameAs -}}
+	{{- $org = merge $org (dict "sameAs" $sameAs) -}}
+{{- end -}}
+
+{{- $website := dict
+	"@type" "WebSite"
+	"@id" $siteID
+	"url" $base
+	"name" site.Title
+	"publisher" (dict "@id" $orgID)
+	"inLanguage" $langs
+-}}
+
+{{- $webpage := dict
+	"@type" "WebPage"
+	"@id" .Permalink
+	"url" .Permalink
+	"name" (partials.Include "func/GetSEOTitle.html" .)
+	"isPartOf" (dict "@id" $siteID)
+	"about" (dict "@id" $orgID)
+	"inLanguage" (site.Language.Locale | default site.Language.Lang)
+-}}
+{{- with .Description -}}
+	{{- $webpage = merge $webpage (dict "description" (. | transform.Plainify)) -}}
+{{- end -}}
+
+{{- $graph := slice $org $website $webpage -}}
+
+{{- if and (eq .Section "events") .IsPage -}}
+	{{- $eventType := "Event" -}}
+	{{- if .Params.recurring -}}
+		{{- $eventType = "EventSeries" -}}
+	{{- end -}}
+	{{- $event := dict
+		"@type" $eventType
+		"@id" (printf "%s#event" .Permalink)
+		"name" .Title
+		"url" .Permalink
+		"organizer" (dict "@id" $orgID)
+		"eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+		"isAccessibleForFree" true
+		"inLanguage" (site.Language.Locale | default site.Language.Lang)
+	-}}
+	{{- with .Description -}}
+		{{- $event = merge $event (dict "description" (. | transform.Plainify)) -}}
+	{{- end -}}
+	{{- with partials.Include "func/GetSocialImage.html" . -}}
+		{{- $event = merge $event (dict "image" .) -}}
+	{{- end -}}
+	{{- if not .Params.recurring -}}
+		{{- $event = merge $event (dict
+			"startDate" (.Date.Format "2006-01-02")
+			"eventStatus" "https://schema.org/EventScheduled"
+		) -}}
+	{{- end -}}
+	{{- $place := dict "@type" "Place" -}}
+	{{- $hasPlace := false -}}
+	{{- with .Params.location_name -}}
+		{{- $place = merge $place (dict "name" .) -}}
+		{{- $hasPlace = true -}}
+	{{- end -}}
+	{{- if or .Params.location_locality .Params.location_country -}}
+		{{- $paddr := dict "@type" "PostalAddress" -}}
+		{{- with .Params.location_locality -}}
+			{{- $paddr = merge $paddr (dict "addressLocality" .) -}}
+		{{- end -}}
+		{{- with .Params.location_country -}}
+			{{- $paddr = merge $paddr (dict "addressCountry" .) -}}
+		{{- end -}}
+		{{- $place = merge $place (dict "address" $paddr) -}}
+		{{- $hasPlace = true -}}
+	{{- end -}}
+	{{- if $hasPlace -}}
+		{{- $event = merge $event (dict "location" $place) -}}
+	{{- end -}}
+	{{- if and .Params.recurring (or .Params.repeat_frequency .Params.by_day) -}}
+		{{- $sched := dict
+			"@type" "Schedule"
+			"scheduleTimezone" "Europe/Zurich"
+		-}}
+		{{- with .Params.repeat_frequency -}}
+			{{- $sched = merge $sched (dict "repeatFrequency" .) -}}
+		{{- end -}}
+		{{- with .Params.by_day -}}
+			{{- $sched = merge $sched (dict "byDay" (printf "https://schema.org/%s" .)) -}}
+		{{- end -}}
+		{{- $event = merge $event (dict "eventSchedule" $sched) -}}
+	{{- end -}}
+	{{- $graph = $graph | append $event -}}
+{{- end -}}
+
+{{- $data := dict "@context" "https://schema.org" "@graph" $graph -}}
+<script type="application/ld+json">{{ $data | jsonify | safeJS }}</script>

@@ -59,3 +59,15 @@ other = "RuKAV event calendar"
 
 [faqSubnav]
 other = "FAQ sections"
+
+[homeEvents]
+other = "Events"
+
+[eventWhen]
+other = "When"
+
+[eventWhere]
+other = "Where"
+
+[eventDate]
+other = "Date"

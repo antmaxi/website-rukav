@@ -517,6 +517,32 @@ footer .ananke-social-link .icon svg {
   vertical-align: top;
 }
 
+.event-meta {
+  letter-spacing: 0.02em;
+}
+
+.event-meta div {
+  margin: 0.15rem 0;
+}
+
+.event-meta dt {
+  display: inline;
+  font-family: Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.event-meta dt::after {
+  content: ": ";
+}
+
+.event-meta dd {
+  display: inline;
+  margin: 0;
+}
+
 @media screen and (min-width: 30em) {
   .poster-gallery img {
     width: 140px;

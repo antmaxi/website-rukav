@@ -1,5 +1,6 @@
 ---
 title: "Events"
+seo_title: "Events in Zurich — RuKAV"
 description: "Events organised by RuKAV in Zurich — Friday meetups at ETH, board game evenings, a book club, mountain trips and lectures."
 ---
 

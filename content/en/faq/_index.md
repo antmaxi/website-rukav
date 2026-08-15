@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+seo_title: "About RuKAV — FAQ, contact and impressum"
 description: "About RuKAV, how to contact us, board members, official documents, useful links, and privacy / impressum."
 faq_sections:
   - id: about

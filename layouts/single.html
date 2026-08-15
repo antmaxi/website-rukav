@@ -41,12 +41,13 @@
         </strong>
       </p>
       {{ end }}
-      {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      {{ if not .Date.IsZero }}
+      {{ if eq .Section "events" }}
+        {{ partials.Include "event-meta.html" . }}
+      {{ else if not .Date.IsZero }}
       <time class="f6 mv4 dib tracked" {{ fmt.Printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safe.HTMLAttr }}>
-        {{- .Date | time.Format (compare.Default "January 2, 2006" .Site.Params.date_format) -}}
+        {{- .Date | time.Format (default "January 2, 2006" .Site.Params.date_format) -}}
       </time>
-      {{end}}
+      {{ end }}
 
       {{/*
           Show "reading time" and "word count" but only if one of the following are true:

@@ -1,6 +1,6 @@
 title = "RuKAV Association"
 baseURL = "https://rukav-swiss.ch/"
-locale = "en-us"
+timeZone = "Europe/Zurich"
 theme = ["ananke"]
 resourceDir = "../resources"
 
@@ -15,11 +15,15 @@ defaultContentLanguageInSubdir = true
 pagerSize = 5
 googleAnalytics = ""
 enableRobotsTXT = true
+# Tags/categories are unused; empty taxonomy pages should not be indexed.
+disableKinds = ["taxonomy", "term"]
 
 [languages]
 
   [languages.en]
     title = "RuKAV"
+    locale = "en"
+    label = "English"
     weight = 1
     contentDir = "content/en"
 
@@ -53,6 +57,8 @@ enableRobotsTXT = true
 
   [languages.ru]
     title = "РуКАВ"
+    locale = "ru"
+    label = "Русский"
     weight = 2
     contentDir = "content/ru"
 
@@ -80,6 +86,9 @@ enableRobotsTXT = true
       name = "FAQ"
       pageRef = "/faq"
       weight = 5
+
+  [languages.ru.params]
+    description = "РуКАВ — Русскоязычная культурно-академическая ассоциация в Цюрихе, Швейцария. Мероприятия, сообщество и поддержка русскоязычных студентов и учёных."
 
 
 
@@ -139,7 +148,7 @@ custom_css = ["css/custom.css"]
 # Read by layouts/events/list.html.
 #   showUpcoming - render the "Upcoming events" group at all
 #   maxDisplay   - cap on how many upcoming events are listed
-#   dateFormat   - Go date layout used on the events page
+#   dateFormat   - Go date layout used on event cards and single pages
 [params.events]
   showUpcoming = true
   maxDisplay = 5
@@ -149,3 +158,15 @@ custom_css = ["css/custom.css"]
 [params.calendar]
   id = "rukav.swiss@gmail.com"
   timezone = "Europe/Zurich"
+
+# Facts used in JSON-LD (Organization) on every page. Keep in sync with the
+# impressum on the FAQ page.
+[params.organization]
+  legalName = "Russischsprechender Kultureller und Akademischer Verein"
+  alternateName = "РуКАВ"
+  foundingDate = "2025-07-19"
+  email = "contact.cause143@simplelogin.com"
+  addressLocality = "Zürich"
+  postalCode = "8000"
+  addressCountry = "CH"
+  logo = "images/rukav_logo_square-transparent.png"

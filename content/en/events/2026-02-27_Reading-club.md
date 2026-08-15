@@ -1,16 +1,23 @@
 ---
-date: 2026-02-27T00:00:00-04:00
+date: 2026-02-27
 description: "Monthly reading club and, since August 2026, a monthly philosophy club — schedules and upcoming titles."
 recurring: true
 featured_image: "images/book-club-generic.png"
-tags: []
 title: "Reading club"
+schedule: "Monthly"
+repeat_frequency: "P1M"
+location_locality: "Zürich"
+location_country: "CH"
 ---
+
+A monthly reading club in Zurich, open to members and guests. We read one book (or a long essay) and meet to discuss it; Russian and English are both used. Since August 2026 we also run a monthly philosophy club. You do not need to have finished the book to come along.
+
+Dates and titles are listed below. Check the calendar for the time and place of the next meeting.
 
 {{< club-columns >}}
 {{< club-column title="Reading club" >}}
 
-We organize a monthly reading club.
+We organize a monthly reading club. The next title is chosen by a vote in our [Telegram voting bot](https://github.com/antmaxi/book-club-bot).
 
 28.08.2026 - Andy Weir "Project Hail Mary"
 

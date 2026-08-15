@@ -1,9 +1,10 @@
 ---
-date: 2025-08-16T00:00:00-04:00
+date: 2025-08-16
 description: "Popular lecture on the history of quantum physics"
 featured_image: "images/2025-08-16_Lecture-Kirill.JPG"
-tags: []
 title: "Lecture on quantum mechanics"
+location_locality: "Zürich"
+location_country: "CH"
 ---
 We organized a lecture on the history of interpretations of quantum mechanics. The speaker was Kirill Voronin, 
 a graduate student from San Sebastian (Spain).

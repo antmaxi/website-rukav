@@ -1,5 +1,6 @@
 ---
 title: ""
+seo_title: "RuKAV — Russian-speaking cultural association in Zurich"
 description: "RuKAV is the Russian-speaking Cultural and Academic Association in Zurich, founded in July 2025 to connect Russian-speaking students, employees and alumni of ETH, UZH and other institutions."
 featured_image: "images/2025-07-19_Foundation-group-with-smiles.png"
 ---

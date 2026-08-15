@@ -62,3 +62,15 @@ other = "Календарь мероприятий РуКАВ"
 
 [faqSubnav]
 other = "Разделы FAQ"
+
+[homeEvents]
+other = "Мероприятия"
+
+[eventWhen]
+other = "Когда"
+
+[eventWhere]
+other = "Где"
+
+[eventDate]
+other = "Дата"

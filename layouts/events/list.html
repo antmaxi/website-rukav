@@ -10,11 +10,10 @@
   Driven by [params.events] in config.toml:
     showUpcoming - render the upcoming group at all
     maxDisplay   - cap on the number of upcoming events shown
-    dateFormat   - date format used throughout this page
+    dateFormat   - date format used on event cards and single pages
 */}}
 {{ define "main" }}
   {{ $cfg := site.Params.events }}
-  {{ $dateFormat := $cfg.dateFormat | default "2 January, 2006" }}
   {{ $now := now }}
 
   {{ $all := where site.RegularPages "Section" "events" }}
@@ -33,7 +32,7 @@
     </section>
 
     {{ with $recurring }}
-      {{ partial "events-group.html" (dict "title" (lang.Translate "eventsRegular") "pages" . "dateFormat" $dateFormat "showDate" false) }}
+      {{ partial "events-group.html" (dict "title" (lang.Translate "eventsRegular") "pages" .) }}
     {{ end }}
 
     {{ if $cfg.showUpcoming | default true }}
@@ -42,12 +41,12 @@
         {{ $shown = first . $shown }}
       {{ end }}
       {{ with $shown }}
-        {{ partial "events-group.html" (dict "title" (lang.Translate "eventsUpcoming") "pages" . "dateFormat" $dateFormat "showDate" true) }}
+        {{ partial "events-group.html" (dict "title" (lang.Translate "eventsUpcoming") "pages" .) }}
       {{ end }}
     {{ end }}
 
     {{ with $past.ByDate.Reverse }}
-      {{ partial "events-group.html" (dict "title" (lang.Translate "eventsPast") "pages" . "dateFormat" $dateFormat "showDate" true) }}
+      {{ partial "events-group.html" (dict "title" (lang.Translate "eventsPast") "pages" .) }}
     {{ end }}
 
     {{ if not $all }}

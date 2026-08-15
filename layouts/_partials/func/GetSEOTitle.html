@@ -1,0 +1,14 @@
+{{/*
+	GetSEOTitle
+
+	Title used in <title>, og:title and twitter:title. Page-level seo_title is
+	the full document title (do not append the site name again). Otherwise:
+	"Page title | Site title", or the site title alone on the home page.
+*/}}
+{{- $title := site.Title -}}
+{{- if .Params.seo_title -}}
+	{{- $title = .Params.seo_title -}}
+{{- else if and (not .IsHome) .Title (ne .Title site.Title) -}}
+	{{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+{{- return $title -}}

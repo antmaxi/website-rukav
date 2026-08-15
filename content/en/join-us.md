@@ -1,5 +1,6 @@
 ---
 title: "Join us!"
+seo_title: "Join RuKAV in Zurich"
 description: "How to become a member of the RuKAV association in Zurich — active, passive and honorary membership types and fees."
 ---
 

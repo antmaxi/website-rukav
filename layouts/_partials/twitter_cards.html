@@ -20,7 +20,7 @@
 {{- end -}}
 
 <meta name="twitter:card" content="{{ compare.Conditional $img "summary_large_image" "summary" }}">
-<meta name="twitter:title" content="{{ .Title | compare.Default site.Title }}">
+<meta name="twitter:title" content="{{ partials.Include "func/GetSEOTitle.html" . }}">
 <meta name="twitter:description" content="{{ $desc | transform.Plainify | strings.Truncate 200 }}">
 {{- with $img }}
 <meta name="twitter:image" content="{{ . }}">

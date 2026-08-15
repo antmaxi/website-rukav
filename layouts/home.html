@@ -15,8 +15,6 @@
   {{- $events := where site.RegularPages "Section" "events" -}}
   {{- $events = $events.ByDate.Reverse -}}
   {{- if $events -}}
-    {{- $initial := site.Params.recent_posts_number | default 3 -}}
-    {{- $batch := site.Params.home_events_batch_size | default 3 -}}
-    {{ partial "home-events.html" (dict "events" $events "initial" $initial "batch" $batch) }}
+    {{ partial "home-events.html" (dict "events" $events) }}
   {{- end -}}
 {{ end }}

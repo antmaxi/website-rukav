@@ -1,0 +1,12 @@
+{{/*
+	hreflang alternates for the current page, plus x-default pointing at English
+	when a translation exists (otherwise at this page).
+*/}}
+{{- $default := . -}}
+{{- range .AllTranslations -}}
+<link rel="alternate" href="{{ .Permalink }}" hreflang="{{ .Language.Locale | default .Language.Lang }}">
+	{{- if eq .Language.Lang "en" -}}
+		{{- $default = . -}}
+	{{- end -}}
+{{- end -}}
+<link rel="alternate" href="{{ $default.Permalink }}" hreflang="x-default">

@@ -1,5 +1,6 @@
 ---
 title: "Support us"
+seo_title: "Support RuKAV in Zurich"
 description: "Support the RuKAV association in Zurich with a donation to our bank account at Zürcher Kantonalbank."
 ---
 

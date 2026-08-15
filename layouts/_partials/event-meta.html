@@ -1,0 +1,39 @@
+{{/*
+	Visible when/where for an event page. Recurring events show `schedule`
+	instead of the front-matter date (that date is a start marker, not the
+	next occurrence). One-off events show the date.
+
+	Expects a page as context.
+*/}}
+{{- $dateFormat := site.Params.events.dateFormat | default "2 January, 2006" -}}
+{{- $hasSchedule := .Params.schedule -}}
+{{- $hasDate := and (not .Params.recurring) (not .Date.IsZero) -}}
+{{- $location := .Params.location_name -}}
+{{- with .Params.location_locality -}}
+	{{- if $location -}}
+		{{- $location = printf "%s, %s" $location . -}}
+	{{- else -}}
+		{{- $location = . -}}
+	{{- end -}}
+{{- end -}}
+{{- if or $hasSchedule $hasDate $location -}}
+<dl class="event-meta f6 mv3">
+	{{- if $hasSchedule -}}
+	<div>
+		<dt>{{ lang.Translate "eventWhen" }}</dt>
+		<dd>{{ .Params.schedule }}</dd>
+	</div>
+	{{- else if $hasDate -}}
+	<div>
+		<dt>{{ lang.Translate "eventDate" }}</dt>
+		<dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format $dateFormat .Date }}</time></dd>
+	</div>
+	{{- end -}}
+	{{- with $location -}}
+	<div>
+		<dt>{{ lang.Translate "eventWhere" }}</dt>
+		<dd>{{ . }}</dd>
+	</div>
+	{{- end -}}
+</dl>
+{{- end -}}
