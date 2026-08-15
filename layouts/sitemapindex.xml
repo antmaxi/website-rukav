@@ -1,0 +1,45 @@
+{{/* Combined multilingual sitemap at /sitemap.xml.
+
+     Hugo's default sitemapindex only lists /en/sitemap.xml and /ru/sitemap.xml.
+     Search Console and most inspectors follow that, but the root file then
+     looks empty. This emits every public page in one urlset instead.
+*/}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{{- $skip := slice "404" "sitemap" "robotsTXT" "taxonomy" "term" -}}
+{{- range . -}}
+  {{- range .Pages -}}
+    {{- if and .Permalink (not .Sitemap.Disable) (not (in $skip .Kind)) -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not .Lastmod.IsZero }}
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+    {{- end -}}
+    {{- with .Sitemap.ChangeFreq }}
+    <changefreq>{{ . }}</changefreq>
+    {{- end -}}
+    {{- $priority := .Sitemap.Priority -}}
+    {{- if .IsHome -}}
+      {{- $priority = 1.0 -}}
+    {{- else if and (eq .Section "events") .IsSection -}}
+      {{- $priority = 0.8 -}}
+    {{- else if eq .Section "events" -}}
+      {{- $priority = 0.7 -}}
+    {{- end -}}
+    {{- if ge $priority 0.0 }}
+    <priority>{{ $priority }}</priority>
+    {{- end -}}
+    {{- $default := . -}}
+    {{- range .AllTranslations }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.Locale | default .Language.Lang }}" href="{{ .Permalink }}" />
+      {{- if eq .Language.Lang "en" -}}
+        {{- $default = . -}}
+      {{- end -}}
+    {{- end }}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ $default.Permalink }}" />
+  </url>
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+</urlset>
