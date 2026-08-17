@@ -4,7 +4,9 @@ description: "Team intellectual quiz evenings in the spirit of What? Where? When
 recurring: true
 featured_image: "images/what-where-when_generic.png"
 title: "What where when (intellectual game in teams)"
-schedule: "Regular quiz evenings"
+schedule: "Every Wednesday"
+repeat_frequency: "P1W"
+by_day: "Wednesday"
 location_locality: "Zürich"
 location_country: "CH"
 ---

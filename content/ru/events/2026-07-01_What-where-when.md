@@ -4,7 +4,9 @@ description: "Интеллектуальная командная игра в д
 recurring: true
 featured_image: "images/what-where-when_generic.png"
 title: "Что? Где? Когда? (интеллектуальная игра в командах)"
-schedule: "Регулярные игровые вечера"
+schedule: "Каждую среду"
+repeat_frequency: "P1W"
+by_day: "Wednesday"
 location_locality: "Zürich"
 location_country: "CH"
 ---

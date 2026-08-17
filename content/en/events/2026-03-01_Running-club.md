@@ -4,7 +4,8 @@ description: "Our regular running group in Zurich — social runs together, open
 recurring: true
 featured_image: "images/running-club_generic.png"
 title: "Running club"
-schedule: "Regular group runs"
+schedule: "Weekly"
+repeat_frequency: "P1W"
 location_locality: "Zürich"
 location_country: "CH"
 ---

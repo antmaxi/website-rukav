@@ -4,7 +4,8 @@ description: "Наш регулярный беговой клуб в Цюрих�
 recurring: true
 featured_image: "images/running-club_generic.png"
 title: "Беговой клуб"
-schedule: "Регулярные совместные пробежки"
+schedule: "Еженедельно"
+repeat_frequency: "P1W"
 location_locality: "Zürich"
 location_country: "CH"
 ---
