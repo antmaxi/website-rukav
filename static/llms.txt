@@ -18,10 +18,10 @@ Contact: contact.cause143@simplelogin.com
 
 ## Regular events
 
-Friday meetups at ETH Zurich (board games and socialising), a reading club every two weeks, a monthly philosophy club, a weekly running club, a film club, and Wednesday What? Where? When? quiz evenings. Dates and rooms are on the events pages and the embedded calendar.
+Friday meetups at ETH Zurich (weekly board games and socialising), a book club twice a month (fiction club and philosophical club), a weekly running club, a film club, and Wednesday What? Where? When? quiz evenings. Dates and rooms are on the events pages and the embedded calendar.
 
 - Board games: https://rukav-swiss.ch/en/events/2025-10-01_board-games/
-- Reading club: https://rukav-swiss.ch/en/events/2026-02-27_reading-club/
+- Book club: https://rukav-swiss.ch/en/events/2026-02-27_reading-club/
 - Running club: https://rukav-swiss.ch/en/events/2026-03-01_running-club/
 - Film club: https://rukav-swiss.ch/en/events/2026-08-14_film-club/
 - What? Where? When?: https://rukav-swiss.ch/en/events/2026-07-01_what-where-when/
