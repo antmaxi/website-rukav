@@ -1,13 +1,13 @@
 ---
 date: 2026-02-27T00:00:00-04:00
-description: "Our book club meets every two weeks. See the schedule of upcoming titles."
+description: "Our book club meets twice a month. See the schedule of upcoming titles."
 recurring: true
 featured_image: "images/book-club-generic.png"
 tags: []
 title: "Book club"
 ---
 
-We organize a book club that meets every two weeks. It has two parts: a fiction club and a philosophical club.
+We organize a book club that meets twice a month. It has two parts: a fiction club and a philosophical club.
 
 ## Fiction club
 
