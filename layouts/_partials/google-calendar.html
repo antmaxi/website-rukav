@@ -13,7 +13,7 @@
 {{- with .height }}{{ $height = . }}{{ end -}}
 <div class="calendar-embed">
   <iframe
-    src="https://calendar.google.com/calendar/embed?src={{ $src | urlquery }}&amp;ctz={{ $tz | urlquery }}"
+    src="https://calendar.google.com/calendar/embed?src={{ $src | urlquery }}&amp;ctz={{ $tz | urlquery }}&amp;wkst=2"
     width="100%"
     height="{{ $height }}"
     frameborder="0"
