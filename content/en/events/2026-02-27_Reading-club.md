@@ -19,6 +19,8 @@ Dates and titles are listed below. Check the calendar for the time and place of 
 
 The next title is chosen by a vote in our [Telegram voting bot](https://github.com/antmaxi/book-club-bot).
 
+25.09.2026 - Philip K. Dick "Ubiq"
+
 28.08.2026 - Andy Weir "Project Hail Mary"
 
 31.07.2026 - Fyodor Dostoevsky "The Idiot"
