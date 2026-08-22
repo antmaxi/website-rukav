@@ -6,7 +6,7 @@ featured_image: "images/2025-07-19_Foundation-group-with-smiles.png"
 
 **RuKAV** — the Russian-speaking Cultural and Academic Association — brings together
 students, employees, alumni and everyone else in Zurich who shares a connection to the Russian
-language. We meet every Friday at ETH, run a book club twice a month and board game
+language. We meet every Friday at ETH, run a book club twice a month and weekly board game
 evenings, and organise lectures, trips and cultural events.
 
 Founded on 19 July 2025, we are a non-commercial association, independent of any
