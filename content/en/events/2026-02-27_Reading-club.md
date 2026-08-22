@@ -1,23 +1,23 @@
 ---
 date: 2026-02-27
-description: "Reading club every two weeks and, since August 2026, a monthly philosophy club — schedules and upcoming titles."
+description: "Our book club meets twice a month. It has two parts: a fiction club and a philosophical club. See the schedule of upcoming titles."
 recurring: true
 featured_image: "images/book-club-generic.png"
-title: "Reading club"
-schedule: "Every 2 weeks"
+title: "Book club"
+schedule: "Twice a month"
 repeat_frequency: "P2W"
 location_locality: "Zürich"
 location_country: "CH"
 ---
 
-A reading club every two weeks in Zurich, open to members and guests. We read one book (or a long essay) and meet to discuss it; Russian and English are both used. Since August 2026 we also run a monthly philosophy club. You do not need to have finished the book to come along.
+A book club in Zurich that meets twice a month, open to members and guests. It has two parts: a fiction club and a philosophical club. We read one book (or a long essay) and meet to discuss it; Russian and English are both used. You do not need to have finished the book to come along.
 
 Dates and titles are listed below. Check the calendar for the time and place of the next meeting.
 
 {{< club-columns >}}
-{{< club-column title="Reading club" >}}
+{{< club-column title="Fiction club" >}}
 
-We organize a reading club every two weeks. The next title is chosen by a vote in our [Telegram voting bot](https://github.com/antmaxi/book-club-bot).
+The next title is chosen by a vote in our [Telegram voting bot](https://github.com/antmaxi/book-club-bot).
 
 28.08.2026 - Andy Weir "Project Hail Mary"
 
@@ -39,9 +39,9 @@ We organize a reading club every two weeks. The next title is chosen by a vote i
 ![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
 
 {{< /club-column >}}
-{{< club-column title="Philosophy club" >}}
+{{< club-column title="Philosophical club" >}}
 
-Since August 2026 we also meet once a month for a philosophy club.
+18.09.2026 - Lars Svendsen "A Philosophy of Boredom"
 
 21.08.2026 - Erich Fromm "The Sane Society"
 
