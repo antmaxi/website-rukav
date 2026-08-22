@@ -1,0 +1,124 @@
+{{/*
+  Wraps each FAQ h2 and the content that follows it into a clickable slide.
+  Hash links and the subnav open the matching panel.
+*/}}
+<script>
+  (function () {
+    var content = document.querySelector(".faq-content");
+    var links = document.querySelectorAll(".faq-subnav__link[data-faq-section]");
+    if (!content) return;
+
+    function wrapSections() {
+      var nodes = Array.from(content.childNodes);
+      var currentInner = null;
+
+      nodes.forEach(function (node) {
+        if (node.nodeType === 1 && node.tagName === "H2") {
+          var id = node.id || "";
+          var slide = document.createElement("section");
+          slide.className = "faq-slide";
+          if (id) {
+            slide.id = id;
+            slide.setAttribute("data-faq-section", id);
+          }
+
+          var heading = document.createElement("h2");
+          heading.className = "faq-slide__heading";
+
+          var trigger = document.createElement("button");
+          trigger.type = "button";
+          trigger.className = "faq-slide__trigger";
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.innerHTML = node.innerHTML;
+
+          var chevron = document.createElement("span");
+          chevron.className = "faq-slide__chevron";
+          chevron.setAttribute("aria-hidden", "true");
+          trigger.appendChild(chevron);
+
+          heading.appendChild(trigger);
+
+          var panel = document.createElement("div");
+          panel.className = "faq-slide__panel";
+          var inner = document.createElement("div");
+          inner.className = "faq-slide__inner";
+          panel.appendChild(inner);
+
+          slide.appendChild(heading);
+          slide.appendChild(panel);
+          content.insertBefore(slide, node);
+          node.remove();
+
+          currentInner = inner;
+        } else if (currentInner) {
+          currentInner.appendChild(node);
+        }
+      });
+    }
+
+    function setActiveNav(id) {
+      links.forEach(function (link) {
+        link.classList.toggle(
+          "faq-subnav__link--active",
+          link.getAttribute("data-faq-section") === id
+        );
+      });
+    }
+
+    function openSection(id, scrollIntoView) {
+      var slides = content.querySelectorAll(".faq-slide[data-faq-section]");
+      var opened = null;
+
+      slides.forEach(function (slide) {
+        var match = slide.getAttribute("data-faq-section") === id;
+        var trigger = slide.querySelector(".faq-slide__trigger");
+        slide.classList.toggle("is-open", match);
+        if (trigger) trigger.setAttribute("aria-expanded", match ? "true" : "false");
+        if (match) opened = slide;
+      });
+
+      setActiveNav(id);
+
+      if (scrollIntoView && opened) {
+        opened.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function syncFromHash(scrollIntoView) {
+      var id = (location.hash || "").slice(1);
+      if (id) openSection(id, scrollIntoView);
+    }
+
+    wrapSections();
+
+    content.addEventListener("click", function (event) {
+      var trigger = event.target.closest(".faq-slide__trigger");
+      if (!trigger) return;
+
+      var slide = trigger.closest(".faq-slide");
+      var id = slide && slide.getAttribute("data-faq-section");
+      if (!id) return;
+
+      if (slide.classList.contains("is-open")) {
+        slide.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+        setActiveNav("");
+        if (location.hash === "#" + id) {
+          history.replaceState(null, "", location.pathname + location.search);
+        }
+        return;
+      }
+
+      if (location.hash !== "#" + id) {
+        history.replaceState(null, "", "#" + id);
+      }
+      openSection(id, false);
+    });
+
+    window.addEventListener("hashchange", function () {
+      syncFromHash(true);
+    });
+
+    syncFromHash(false);
+  })();
+</script>

@@ -16,5 +16,6 @@
     <div class="faq-content nested-copy-line-height lh-copy {{ $.Param "post_content_classes" | compare.Default "serif" }} f4 nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }} w-100-l">
       {{- .Content -}}
     </div>
+    {{ partial "faq-accordion.html" . }}
   </article>
 {{ end }}
