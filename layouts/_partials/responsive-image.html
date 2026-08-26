@@ -1,0 +1,38 @@
+{{- $resource := .resource -}}
+{{- $widths := .widths | default (slice 320 640 960) -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $fetchpriority := .fetchpriority | default "" -}}
+
+{{- if and $resource (in (slice "image/jpeg" "image/png" "image/webp") $resource.MediaType.Type) -}}
+  {{- $variants := slice -}}
+  {{- range $widths -}}
+    {{- if ge $resource.Width . -}}
+      {{- $variant := $resource.Resize (printf "%dx webp q82 Lanczos" .) -}}
+      {{- $variants = $variants | append $variant -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $variants -}}
+    {{- $variants = $variants | append ($resource.Resize (printf "%dx webp q82" $resource.Width)) -}}
+  {{- end -}}
+  {{- $fallback := index $variants (sub (len $variants) 1) -}}
+  {{- $srcset := slice -}}
+  {{- range $variants -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" .RelPermalink .Width) -}}
+  {{- end -}}
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    srcset="{{ delimit $srcset ", " }}"
+    sizes="{{ $sizes }}"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    class="{{ $class }}"
+    alt="{{ $alt }}"
+    decoding="async"
+    {{- with $loading }} loading="{{ . }}"{{ end }}
+    {{- with $fetchpriority }} fetchpriority="{{ . }}"{{ end }}>
+{{- else if $resource -}}
+  <img src="{{ $resource.RelPermalink }}" class="{{ $class }}" alt="{{ $alt }}"{{ with $loading }} loading="{{ . }}"{{ end }}>
+{{- end -}}

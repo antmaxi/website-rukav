@@ -1,13 +1,6 @@
 {{/*
   In-page section navigation for the FAQ page.
 */}}
-<style>
-  html:not([data-theme="light"]) .faq-subnav > .faq-subnav__link:any-link {
-    color: #cdecff !important;
-    text-decoration: underline !important;
-    opacity: 1 !important;
-  }
-</style>
 <nav class="faq-subnav nested-links mb4" aria-label="{{ lang.Translate "faqSubnav" }}">
   {{- range .Params.faq_sections }}
   <a href="#{{ .id }}"

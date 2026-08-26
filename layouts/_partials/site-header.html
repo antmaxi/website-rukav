@@ -1,11 +1,24 @@
 {{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
-{{ if $featured_image }}
-  {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+{{ $featured_resource := partials.Include "func/GetFeaturedImageResource.html" . }}
+{{ if or $featured_resource $featured_image }}
   {{ $featured_image_class := site.Params.featured_image_class | compare.Default "cover bg-top" }}
   {{ $header_section_class := .Param "header_section_class" | default "tc-l pv4 pv6-l ph3 ph4-ns" }}
-  <header class="{{ $featured_image_class }}" style="background-image: url('{{ $featured_image }}');">
+  <header class="{{ $featured_image_class }} site-cover">
+    {{- if $featured_resource -}}
+      {{ partial "responsive-image.html" (dict
+        "resource" $featured_resource
+        "widths" (slice 640 960 1600)
+        "sizes" "100vw"
+        "class" "site-cover__image"
+        "alt" ""
+        "loading" "eager"
+        "fetchpriority" "high"
+      ) }}
+    {{- else -}}
+      <img src="{{ $featured_image }}" class="site-cover__image" alt="" fetchpriority="high">
+    {{- end -}}
     {{ $cover_dimming_class := site.Params.cover_dimming_class | default "bg-black-60" }}
-    <div class="{{ $cover_dimming_class }}">
+    <div class="{{ $cover_dimming_class }} site-cover__content">
       {{ partials.Include "site-navigation.html" .}}
       <div class="{{ $header_section_class }}">
         <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">

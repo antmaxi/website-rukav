@@ -2,15 +2,7 @@
   <div class="flex flex-wrap items-center justify-between center nav-bar">
     <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-white white-90 dib no-underline nav-logo">
       {{ with .Site.Params.site_logo }}
-        {{/* Two logos, one per theme, shown/hidden the same way the theme
-             toggle's sun/moon icons already are (see custom.css). Falls back
-             to a single logo if site_logo_dark isn't configured. */}}
-        {{ with $.Site.Params.site_logo_dark }}
-          <img src="{{ urls.RelURL . }}" class="w100 mw5-ns logo-for-dark-theme" alt="{{ $.Site.Title }}" />
-          <img src="{{ urls.RelURL $.Site.Params.site_logo }}" class="w100 mw5-ns logo-for-light-theme" alt="{{ $.Site.Title }}" />
-        {{ else }}
-          <img src="{{ urls.RelURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
-        {{ end }}
+        <img src="{{ urls.RelURL . }}" class="w100 mw5-ns site-logo" width="465" height="465" alt="{{ $.Site.Title }}" />
       {{ else }}
         {{ .Site.Title }}
       {{ end }}

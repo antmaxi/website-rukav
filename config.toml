@@ -2,7 +2,7 @@ title = "RuKAV Association"
 baseURL = "https://rukav-swiss.ch/"
 timeZone = "Europe/Zurich"
 theme = ["ananke"]
-resourceDir = "../resources"
+resourceDir = "resources"
 
 # Publish events dated in the future. Hugo omits future-dated content by
 # default, which would make an event invisible until the day it happened —
@@ -102,12 +102,8 @@ filename = "sitemap.xml"
 text_color = "black" #"white"
 author = ""
 favicon = "images/rukav_logo_square-transparent.png"
-# site_logo is black text: right for a light background (browser tab chrome,
-# and the light theme's white header), wrong for the default dark theme's navy
-# header, where it is nearly invisible. site_logo_dark is the white variant
-# used there instead; see the swap in site-navigation.html.
+# The black logo is inverted by CSS in dark mode so only one image is fetched.
 site_logo = "images/rukav_logo_square-transparent.png"
-site_logo_dark = "images/rukav_logo_square-transparent-white.png"
 # Link-preview image for pages that have no featured_image of their own
 # (home, donate, contact, ...). Resolved from assets/ by func/GetSocialImage.html.
 social_image = "images/2025-07-19_Foundation-group-with-smiles.png"
@@ -122,7 +118,7 @@ description = "RuKAV — the Russian-speaking Cultural and Academic Association 
 background_color_class = "bg-dark-blue"
 featured_image_class = "cover site-hero"
 recent_posts_number = 3
-home_events_batch_size = 3
+home_events_limit = 6
 
 # GoatCounter analytics: cookieless, no PII, no cookie banner needed. The value
 # is the account code -> https://<code>.goatcounter.com. The script is emitted
@@ -131,7 +127,7 @@ home_events_batch_size = 3
 goatcounter = "rukav"
 
 [params.ananke]
-custom_css = ["css/custom.css"]
+custom_css = ["custom.css.html"]
 
 # Social links in the header, rendered as SVG icons by the theme's
 # social/follow.html partial. The URLs are built from the profile templates in
@@ -152,12 +148,14 @@ custom_css = ["css/custom.css"]
 [params.events]
   showUpcoming = true
   maxDisplay = 5
+  pastMaxDisplay = 12
   dateFormat = "2 January, 2006"
 
 # Public Google Calendar embedded on the home and events pages.
 [params.calendar]
   id = "rukav.swiss@gmail.com"
   timezone = "Europe/Zurich"
+  height = 600
 
 # Facts used in JSON-LD (Organization) on every page. Keep in sync with the
 # impressum on the FAQ page.

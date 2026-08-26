@@ -34,9 +34,9 @@
           {{- lang.Translate "by" -}}
         {{ end -}} <strong>
         {{- if reflect.IsSlice . -}}
-            {{ collections.Delimit . ", " | transform.Markdownify }}
+            {{ collections.Delimit . ", " | transform.Plainify }}
         {{- else -}}
-            {{ . | transform.Markdownify }}
+            {{ . | transform.Plainify }}
         {{- end -}}
         </strong>
       </p>

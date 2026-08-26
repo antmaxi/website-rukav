@@ -15,7 +15,7 @@ A book club in Zurich that meets twice a month, open to members and guests. It h
 Dates and titles are listed below. Check the calendar for the time and place of the next meeting.
 
 {{< club-columns >}}
-{{< club-column title="Fiction club" >}}
+{{< club-column title="Fiction club" posters="images/book-club_2026-06_Summa-Technologiae.jpg,images/book-club_Chevengur.jpg,images/book-club_Mother-night.jpg,images/book-club_Steppenwolf.jpg" >}}
 
 The next title is chosen by a vote in our [Telegram voting bot](https://github.com/antmaxi/book-club-bot).
 
@@ -34,11 +34,6 @@ The next title is chosen by a vote in our [Telegram voting bot](https://github.c
 27.03.2026 - Kurt Vonnegut "Mother Night"
 
 27.02.2026 - Fyodor Dostoevsky "Poor Folk"
-
-![Poster for Summa Technologiae](images/book-club_2026-06_Summa-Technologiae.jpg)
-![Poster for Chevengur](images/book-club_Chevengur.jpg)
-![Poster for Mother-night](images/book-club_Mother-night.jpg)
-![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
 
 {{< /club-column >}}
 {{< club-column title="Philosophical club" >}}

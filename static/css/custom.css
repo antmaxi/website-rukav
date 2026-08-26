@@ -200,23 +200,47 @@ html:not([data-theme="light"]) .calendar-embed iframe {
   filter: invert(0.92) hue-rotate(180deg) contrast(0.95);
 }
 
+.formsly-embed {
+  display: block;
+  border: 0;
+  border-radius: 12px;
+  background: var(--bg-color);
+}
+
 /* --- Site hero (home featured image) ---------------------------------------
    Shorter band and a lower focal point so title text sits over the lower part
    of the group photo instead of across people's faces. */
-header.cover.site-hero,
-header.site-hero[style*="background-image"] {
-  background-position: center 38% !important;
+.site-cover {
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
 }
 
-header.cover.site-hero .tc-l.pv4,
-header.site-hero[style*="background-image"] .tc-l.pv4 {
+.site-cover__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.site-hero .site-cover__image {
+  object-position: center 38%;
+}
+
+.site-cover__content {
+  position: relative;
+  z-index: 1;
+}
+
+header.cover.site-hero .tc-l.pv4 {
   padding-top: 1.35rem;
   padding-bottom: 1.35rem;
 }
 
 @media screen and (min-width: 60em) {
-  header.cover.site-hero .pv6-l,
-  header.site-hero[style*="background-image"] .pv6-l {
+  header.cover.site-hero .pv6-l {
     padding-top: 5.35rem;
     padding-bottom: 5.35rem;
   }
@@ -369,12 +393,6 @@ header.site-hero[style*="background-image"] .tc-l.pv4 {
   font-weight: 600;
 }
 
-/* --- Home page events (infinite scroll) ---------------------------------- */
-
-.home-events__sentinel {
-  height: 1px;
-}
-
 /* Featured image sits beside the text; without flex-start the image column
    stretches to match a tall summary and the thumbnail looks distorted. */
 .home-events .flex-row-ns {
@@ -413,19 +431,12 @@ header.site-hero[style*="background-image"] .tc-l.pv4 {
   height: auto;
 }
 
-/* Same show/hide pattern as the theme toggle's sun/moon icons: the dark-theme
-   logo (white text) shows by default, the light-theme logo (black text) shows
-   once [data-theme="light"] is set on <html>. */
-.logo-for-light-theme {
-  display: none;
+.site-logo {
+  filter: invert(1);
 }
 
-[data-theme="light"] .logo-for-dark-theme {
-  display: none;
-}
-
-[data-theme="light"] .logo-for-light-theme {
-  display: block;
+[data-theme="light"] .site-logo {
+  filter: none;
 }
 
 /* Visually hidden but still focusable, so the menu stays keyboard operable.
@@ -493,7 +504,7 @@ html:not([data-theme="light"]) .nav-menu__link--active {
 }
 
 header.cover .nav-menu__link--active,
-header[style*="background-image"] .nav-menu__link--active {
+header.site-cover .nav-menu__link--active {
   color: #cdecff !important;
   text-decoration-color: #cdecff;
 }
@@ -535,7 +546,8 @@ footer .ananke-social-link .icon svg {
   color: var(--text-color);
 }
 
-.club-columns__body img {
+.club-columns__body img,
+.club-poster {
   display: inline-block;
   width: 110px;
   max-width: 40vw;
@@ -549,7 +561,8 @@ footer .ananke-social-link .icon svg {
 }
 
 @media screen and (min-width: 30em) {
-  .club-columns__body img {
+  .club-columns__body img,
+  .club-poster {
     width: 140px;
   }
 }

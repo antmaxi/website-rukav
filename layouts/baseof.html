@@ -41,11 +41,7 @@
       {{ end }}
     {{ end }}
 
-    {{ if .Params.canonicalUrl }}
-      <link rel="canonical" href="{{ .Params.canonicalUrl }}">
-    {{ else }}
-      <link rel="canonical" href="{{ .Permalink }}">
-    {{ end }}
+    <link rel="canonical" href="{{ .Permalink }}">
 
     {{ partials.Include "hreflang.html" . }}
 

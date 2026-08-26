@@ -13,15 +13,27 @@
       <div class="w-100 w-30-l mb4 relative bg-white">
         <article class="bb b--black-10">
           <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+            {{ $imgResource := partials.Include "func/GetFeaturedImageResource.html" . }}
             {{ $img := partials.Include "func/GetFeaturedImage.html" . }}
-            {{ with $img }}
+            {{ if or $imgResource $img }}
               {{/* $ inside this `with` is the partial's own dict argument
                    (title/pages/...), not the page - it has no RelPermalink,
                    so this link fell back to an empty href and just reloaded
                    the current (listing) page. $page, captured above, is the
                    actual event. */}}
               <a href="{{ $page.RelPermalink }}" class="db grow">
-                <img src="{{ . }}" class="img" alt="" loading="lazy" decoding="async">
+                {{- if $imgResource -}}
+                  {{ partial "responsive-image.html" (dict
+                    "resource" $imgResource
+                    "widths" (slice 320 480 640)
+                    "sizes" "(min-width: 60em) 30vw, 100vw"
+                    "class" "img"
+                    "alt" $page.Title
+                    "loading" "lazy"
+                  ) }}
+                {{- else -}}
+                  <img src="{{ $img }}" class="img" alt="{{ $page.Title }}" loading="lazy" decoding="async">
+                {{- end -}}
               </a>
             {{ end }}
 

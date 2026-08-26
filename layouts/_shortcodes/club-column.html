@@ -1,7 +1,27 @@
 {{- $title := .Get "title" -}}
+{{- $posters := .Get "posters" | default "" -}}
 <div class="club-columns__col w-100 w-50-ns mb4 mb0-ns">
   {{- with $title -}}
   <h2 class="club-columns__title f4 fw6 mt0 mb3">{{ . }}</h2>
   {{- end -}}
   <div class="club-columns__body nested-copy-line-height">{{ .Inner | markdownify }}</div>
+  {{- with $posters -}}
+    <div class="club-columns__posters">
+      {{- range split . "," -}}
+        {{- $src := strings.TrimSpace . -}}
+        {{- with resources.Get $src -}}
+          {{ partial "responsive-image.html" (dict
+            "resource" .
+            "widths" (slice 160 280 480)
+            "sizes" "(min-width: 30em) 140px, 40vw"
+            "class" "club-poster"
+            "alt" (printf "%s poster" $title)
+            "loading" "lazy"
+          ) }}
+        {{- else -}}
+          {{- errorf "club-column poster %q was not found" $src -}}
+        {{- end -}}
+      {{- end -}}
+    </div>
+  {{- end -}}
 </div>

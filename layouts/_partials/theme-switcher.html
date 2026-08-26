@@ -6,13 +6,3 @@
     <path d="M12.14,2.14L12.14,2.14c-0.46,0.05-0.67,0.59-0.35,0.92c1.28,1.32,2.07,3.11,2.07,5.08c0,4.01-3.25,7.26-7.26,7.26 c-1.97,0-3.76-0.78-5.08-2.07c-0.32-0.32-0.87-0.11-0.92,0.35C0.21,17.2,1.86,20.66,4.72,22.14c2.86,1.48,6.34,1.4,9.11-0.21 c2.77-1.61,4.42-4.52,4.42-7.72c0-2.8-1.28-5.46-3.48-7.26C14.07,4.68,13.15,3.31,12.14,2.14z" />
   </svg>
 </button>
-
-<script>
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-</script>

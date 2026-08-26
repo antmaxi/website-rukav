@@ -9,6 +9,8 @@
   (renderer.unsafe is off). << inserts the template's output directly instead,
   so .Inner is rendered explicitly here via markdownify - which still runs the
   image render hook - rather than relying on automatic markdown pre-rendering.
+  Pages using thumbnail galleries should set content_image_widths and
+  content_image_sizes in front matter so the browser selects thumbnail files.
 
     {{< gallery >}}
     ![Alt text](images/foo.jpg)

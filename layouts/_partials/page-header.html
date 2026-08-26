@@ -1,0 +1,39 @@
+{{- $featuredImage := partials.Include "func/GetFeaturedImage.html" . -}}
+{{- $featuredResource := partials.Include "func/GetFeaturedImageResource.html" . -}}
+{{- if or $featuredResource $featuredImage -}}
+  {{- $featuredImageClass := .Params.featured_image_class | compare.Default "cover bg-center" -}}
+  {{- $coverDimmingClass := .Params.cover_dimming_class | compare.Default "bg-black-60" -}}
+  {{- $headerSectionClass := .Param "header_section_class" | compare.Default "tc-l pv6 ph3 ph4-ns" -}}
+  <header class="{{ $featuredImageClass }} site-cover">
+    {{- if $featuredResource -}}
+      {{ partial "responsive-image.html" (dict
+        "resource" $featuredResource
+        "widths" (slice 640 960 1440 1920)
+        "sizes" "100vw"
+        "class" "site-cover__image"
+        "alt" ""
+        "loading" "eager"
+        "fetchpriority" "high"
+      ) }}
+    {{- else -}}
+      <img src="{{ $featuredImage }}" class="site-cover__image" alt="" fetchpriority="high">
+    {{- end -}}
+    <div class="{{ $coverDimmingClass }} site-cover__content">
+      {{ partials.Include "site-navigation.html" . }}
+      <div class="{{ $headerSectionClass }}">
+        {{- if not .Params.omit_header_text -}}
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">{{ .Title | compare.Default .Site.Title }}</div>
+          {{- with .Params.description -}}
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">{{ . }}</div>
+          {{- end -}}
+        {{- end -}}
+      </div>
+    </div>
+  </header>
+{{- else -}}
+  <header>
+    <div class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }}">
+      {{ partials.Include "site-navigation.html" . }}
+    </div>
+  </header>
+{{- end -}}

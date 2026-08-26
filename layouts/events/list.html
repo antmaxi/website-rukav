@@ -45,7 +45,11 @@
       {{ end }}
     {{ end }}
 
-    {{ with $past.ByDate.Reverse }}
+    {{ $shownPast := $past.ByDate.Reverse }}
+    {{ with $cfg.pastMaxDisplay }}
+      {{ $shownPast = first . $shownPast }}
+    {{ end }}
+    {{ with $shownPast }}
       {{ partial "events-group.html" (dict "title" (lang.Translate "eventsPast") "pages" .) }}
     {{ end }}
 

@@ -25,6 +25,9 @@
 {{ $matches := "feature,cover" }}
 {{/* Use the value from front matter if present */}}
 {{ with .Params.featured_image }}
+  {{ if findRE `(?i)^https?://` . }}
+    {{ errorf "featured_image must be a local path, got %q on %s" . $.RelPermalink }}
+  {{ end }}
   {{/* This is the default case, the image lives in the static directory.
     In which case we'll use the static dir */}}
   {{ $linkToCover = strings.Trim . "/" | urls.AbsURL }}

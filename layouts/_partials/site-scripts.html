@@ -1,8 +1,14 @@
-<script>
-  (function() {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  })();
-</script>
+{{- $scripts := slice
+  (dict "path" "js/theme-init.js" "defer" false)
+  (dict "path" "js/site.js" "defer" true)
+-}}
+{{- range $scripts -}}
+  {{- $entry := . -}}
+  {{- with resources.Get $entry.path -}}
+    {{- $script := . -}}
+    {{- if not hugo.IsDevelopment -}}
+      {{- $script = $script | js.Build (dict "minify" true) | resources.Fingerprint -}}
+    {{- end -}}
+    <script src="{{ $script.RelPermalink }}"{{ if $entry.defer }} defer{{ end }}{{ with $script.Data.Integrity }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>
+  {{- end -}}
+{{- end -}}

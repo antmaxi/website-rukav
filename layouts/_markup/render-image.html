@@ -25,7 +25,8 @@
 {{- end -}}
 
 {{- if $processable -}}
-  {{- $widths := slice 480 960 1440 -}}
+  {{- $widths := .Page.Param "content_image_widths" | default (slice 480 960 1440) -}}
+  {{- $sizes := .Page.Param "content_image_sizes" | default "(min-width: 60em) 60em, 100vw" -}}
   {{- $srcset := slice -}}
   {{- range $widths -}}
     {{- if ge $res.Width . -}}
@@ -34,10 +35,11 @@
     {{- end -}}
   {{- end -}}
 
-  {{- /* Fallback src: capped at 1440px, or the original if it is smaller. */ -}}
+  {{- /* Fallback src: capped at the largest variant for this display context. */ -}}
   {{- $fallback := $res -}}
-  {{- if gt $res.Width 1440 -}}
-    {{- $fallback = $res.Resize "1440x webp q82 Lanczos" -}}
+  {{- $fallbackWidth := index $widths (sub (len $widths) 1) -}}
+  {{- if gt $res.Width $fallbackWidth -}}
+    {{- $fallback = $res.Resize (printf "%dx webp q82 Lanczos" $fallbackWidth) -}}
   {{- else -}}
     {{- $fallback = $res.Resize (printf "%dx webp q82" $res.Width) -}}
   {{- end -}}
@@ -48,7 +50,7 @@
   <img
     src="{{ $fallback.RelPermalink }}"
     srcset="{{ delimit $srcset ", " }}"
-    sizes="(min-width: 60em) 60em, 100vw"
+    sizes="{{ $sizes }}"
     width="{{ $fallback.Width }}"
     height="{{ $fallback.Height }}"
     alt="{{ $alt }}"

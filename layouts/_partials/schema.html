@@ -138,4 +138,7 @@
 {{- end -}}
 
 {{- $data := dict "@context" "https://schema.org" "@graph" $graph -}}
-<script type="application/ld+json">{{ $data | jsonify | safeJS }}</script>
+{{- $json := $data | jsonify -}}
+{{- $schemaResource := $json | resources.FromString (printf "schema/%s.json" (crypto.SHA256 $json)) | resources.Fingerprint -}}
+{{- .Store.Set "schemaIntegrity" $schemaResource.Data.Integrity -}}
+<script type="application/ld+json">{{ $json | safeJS }}</script>

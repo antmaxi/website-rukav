@@ -3,7 +3,7 @@ name: Report a bug
 about: Use this template to report a bug.
 title: "bug: "
 labels: status:unconfirmed
-assignees: davidsneighbour
+assignees: ""
 ---
 
 <!---

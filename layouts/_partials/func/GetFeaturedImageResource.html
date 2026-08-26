@@ -1,0 +1,33 @@
+{{- $resource := false -}}
+{{- $matches := "feature,cover" -}}
+
+{{- with .Params.featured_image -}}
+  {{- with resources.Get . -}}
+    {{- $resource = . -}}
+  {{- end -}}
+  {{- if not $resource -}}
+    {{- with $.Resources.GetMatch . -}}
+      {{- $resource = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .Params.images -}}
+    {{- range first 1 . -}}
+      {{- with resources.Get . -}}
+        {{- $resource = . -}}
+      {{- else -}}
+        {{- with $.Resources.GetMatch . -}}
+          {{- $resource = . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- with .Resources.ByType "image" -}}
+      {{- with .GetMatch (fmt.Printf "**{%s}*" $matches) -}}
+        {{- $resource = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $resource -}}

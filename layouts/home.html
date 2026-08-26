@@ -12,8 +12,19 @@
     {{ .Content }}
   </article>
 
-  {{- $events := where site.RegularPages "Section" "events" -}}
-  {{- $events = $events.ByDate.Reverse -}}
+  {{- $allEvents := where site.RegularPages "Section" "events" -}}
+  {{- $allEvents = $allEvents.ByDate.Reverse -}}
+  {{- $recurring := where $allEvents "Params.recurring" true -}}
+  {{- $oneOff := where $allEvents "Params.recurring" "!=" true -}}
+  {{- $limit := site.Params.home_events_limit | default 6 | int -}}
+  {{- $events := $recurring -}}
+  {{- $remaining := sub $limit (len $recurring) -}}
+  {{- if gt $remaining 0 -}}
+    {{- range first $remaining $oneOff -}}
+      {{- $events = $events | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $events = sort $events "Date" "desc" -}}
   {{- if $events -}}
     {{ partial "home-events.html" (dict "events" $events) }}
   {{- end -}}

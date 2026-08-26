@@ -1,23 +1,22 @@
 {{/*
   Embeds a public Google Calendar as an iframe.
 
-  Calendar settings live in [params.calendar] in config.toml. Optional dict keys:
-  src, timezone, height.
+  Calendar settings live exclusively in [params.calendar] in config.toml.
 */}}
 {{- $cfg := site.Params.calendar -}}
 {{- $src := $cfg.id | default "rukav.swiss@gmail.com" -}}
 {{- $tz := $cfg.timezone | default "Europe/Zurich" -}}
-{{- $height := "600" -}}
-{{- with .src }}{{ $src = . }}{{ end -}}
-{{- with .timezone }}{{ $tz = . }}{{ end -}}
-{{- with .height }}{{ $height = . }}{{ end -}}
+{{- $height := int ($cfg.height | default 600) -}}
+{{- if lt $height 300 }}{{ $height = 300 }}{{ end -}}
+{{- if gt $height 1000 }}{{ $height = 1000 }}{{ end -}}
+{{- $url := printf "https://calendar.google.com/calendar/embed?src=%s&ctz=%s&wkst=2" ($src | urlquery) ($tz | urlquery) -}}
 <div class="calendar-embed">
   <iframe
-    src="https://calendar.google.com/calendar/embed?src={{ $src | urlquery }}&amp;ctz={{ $tz | urlquery }}&amp;wkst=2"
+    src="{{ $url }}"
     width="100%"
     height="{{ $height }}"
-    frameborder="0"
     scrolling="no"
-    loading="lazy"
+    sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
+    referrerpolicy="strict-origin-when-cross-origin"
     title="{{ lang.Translate "calendarEmbed" }}"></iframe>
 </div>

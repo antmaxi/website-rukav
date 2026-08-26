@@ -15,7 +15,7 @@ location_country: "CH"
 Даты и названия — ниже. Время и место следующей встречи — в календаре.
 
 {{< club-columns >}}
-{{< club-column title="Клуб художественной литературы" >}}
+{{< club-column title="Клуб художественной литературы" posters="images/book-club_2026-06_Summa-Technologiae.jpg,images/book-club_Chevengur.jpg,images/book-club_Mother-night.jpg,images/book-club_Steppenwolf.jpg" >}}
 
 Следующую книгу выбираем голосованием в [Telegram-боте](https://github.com/antmaxi/book-club-bot).
 
@@ -34,11 +34,6 @@ location_country: "CH"
 27.03.2026 - Курт Воннегут "Мать Тьма"
 
 27.02.2026 - Фёдор Достоевский "Бедные люди"
-
-![Poster for Summa Technologiae](images/book-club_2026-06_Summa-Technologiae.jpg)
-![Poster for Chevengur](images/book-club_Chevengur.jpg)
-![Poster for Mother-night](images/book-club_Mother-night.jpg)
-![Poster for Steppenwolf](images/book-club_Steppenwolf.jpg)
 
 {{< /club-column >}}
 {{< club-column title="Философский клуб" >}}

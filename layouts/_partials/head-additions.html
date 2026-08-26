@@ -7,32 +7,36 @@
   proxy (e.g. Cloudflare) in front of Pages that can set real headers.
 
   Directives below reflect what the site actually loads:
-    - 'unsafe-inline' in script-src: the theme-switcher and theme-preference
-      scripts are inline (see theme-switcher.html, site-scripts.html).
-    - 'unsafe-inline' in style-src: Ananke/tachyons emit inline style attributes.
+    - Site behavior is served from a fingerprinted same-origin script.
+    - The per-page JSON-LD block is authorized by its SHA-256 hash.
+    - GoatCounter (when params.goatcounter is set): gc.zgo.at serves the
+      versioned count script; the <code>.goatcounter.com origin receives the
+      hit via an image beacon (img-src) or sendBeacon (connect-src).
     - frame-src: 'self' for the pdf shortcode's same-origin PDFs, plus
       formsly.ch for the Formsly contact-form embed, and calendar.google.com
-      for the home-page calendar widget. The form itself submits inside that
+      for the calendar widget on home and events. The form itself submits inside that
       iframe (a different origin), so it is not governed by this page's
       form-action, which is now just 'self'.
-    - GoatCounter (when params.goatcounter is set): gc.zgo.at serves the
-      counter script, and the <code>.goatcounter.com origin receives the hit,
-      via an image beacon (img-src) or sendBeacon (connect-src). These are
-      added only when the param is set, so removing it cleans the CSP too.
 */}}
 {{- $gc := site.Params.goatcounter -}}
 {{- $gcOrigin := "" -}}
 {{- with $gc }}{{ $gcOrigin = printf "https://%s.goatcounter.com" . }}{{ end -}}
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'{{ with $gc }} https://gc.zgo.at{{ end }}; style-src 'self' 'unsafe-inline'; img-src 'self' data:{{ with $gcOrigin }} {{ . }}{{ end }}; font-src 'self'; frame-src 'self' https://formsly.ch https://calendar.google.com; form-action 'self'; connect-src 'self'{{ with $gcOrigin }} {{ . }}{{ end }}; base-uri 'self'; object-src 'none'">
+{{- $schemaIntegrity := .Store.Get "schemaIntegrity" -}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'{{ with $schemaIntegrity }} '{{ . }}'{{ end }}{{ with $gc }} https://gc.zgo.at{{ end }}; style-src 'self'; img-src 'self' data:{{ with $gcOrigin }} {{ . }}{{ end }}; font-src 'self'; frame-src 'self' https://formsly.ch https://calendar.google.com; form-action 'self'; connect-src 'self'{{ with $gcOrigin }} {{ . }}{{ end }}; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 {{/*
   GoatCounter, production only so local dev and preview builds are not counted.
   Cookieless and PII-free by default, so no cookie/consent banner is required.
+  count.v5.js is the current SRI-stable build (HTTPS, not protocol-relative).
 */}}
 {{ if and hugo.IsProduction $gc }}
-  <script data-goatcounter="{{ $gcOrigin }}/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="{{ $gcOrigin }}/count"
+          async
+          src="https://gc.zgo.at/count.v5.js"
+          crossorigin="anonymous"
+          integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 {{ end }}
 
 {{/*
