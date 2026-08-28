@@ -1,7 +1,9 @@
 {{- /*
-  Wraps a block of markdown images in a small, wrapping thumbnail row instead
-  of the default one-full-width-image-per-line layout. Use for a set of
-  related images - e.g. book covers for a book club session.
+  Wraps a block of markdown images in a wrapping thumbnail row instead of the
+  default one-full-width-image-per-line layout.
+
+  Optional class= adds extra classes on the wrapper (event-photos for
+  camera photos, which are larger than the default book-cover thumbs).
 
   Must use the << delimiter (not %%): with %%, this template's own <div>
   output is spliced back into the markdown and re-passed through goldmark
@@ -12,9 +14,10 @@
   Pages using thumbnail galleries should set content_image_widths and
   content_image_sizes in front matter so the browser selects thumbnail files.
 
-    {{< gallery >}}
+    {{< gallery class="event-photos" >}}
     ![Alt text](images/foo.jpg)
     ![Alt text](images/bar.jpg)
     {{< /gallery >}}
 */ -}}
-<div class="poster-gallery">{{ .Inner | markdownify }}</div>
+{{- $class := .Get "class" | default "" -}}
+<div class="poster-gallery{{ with $class }} {{ . }}{{ end }}">{{ .Inner | markdownify }}</div>

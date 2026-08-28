@@ -8,11 +8,18 @@ schedule: "Два раза в месяц"
 repeat_frequency: "P2W"
 location_locality: "Zürich"
 location_country: "CH"
+content_image_widths: [320, 640, 960]
+content_image_sizes: "(min-width: 30em) 280px, 46vw"
 ---
 
 Книжный клуб в Цюрихе два раза в месяц — для членов ассоциации и гостей. Он состоит из двух частей: клуба художественной литературы и философского клуба. Читаем одну книгу (или длинное эссе) и собираемся обсудить; говорим и по-русски, и по-английски. Дочитывать книгу заранее не обязательно.
 
 Даты и названия — ниже. Время и место следующей встречи — в календаре.
+
+{{< gallery class="event-photos" >}}
+![Группа после обсуждения «Мать Тьма»](images/2026-03-27_Book-club.jpg)
+![Встреча по «Сумме технологии» Станислава Лема](images/2026-06-26_Book-club.jpg)
+{{< /gallery >}}
 
 {{< club-columns >}}
 {{< club-column title="Клуб художественной литературы" posters="images/book-club_2026-06_Summa-Technologiae.jpg,images/book-club_Chevengur.jpg,images/book-club_Mother-night.jpg,images/book-club_Steppenwolf.jpg" >}}

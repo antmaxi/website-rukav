@@ -624,6 +624,19 @@ footer .ananke-social-link .icon svg {
   }
 }
 
+/* Event photos are larger than book-cover thumbs so faces stay readable. */
+.poster-gallery.event-photos img {
+  width: 240px;
+  max-width: 46%;
+}
+
+@media screen and (min-width: 30em) {
+  .poster-gallery.event-photos img {
+    width: 280px;
+    max-width: 31%;
+  }
+}
+
 /* The theme's page header uses pv6 (8rem top and bottom). On a phone that is
    ~256px of empty band above the content on every page. */
 @media screen and (max-width: 59.99em) {

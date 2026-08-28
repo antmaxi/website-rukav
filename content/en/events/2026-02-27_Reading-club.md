@@ -8,11 +8,18 @@ schedule: "Twice a month"
 repeat_frequency: "P2W"
 location_locality: "Zürich"
 location_country: "CH"
+content_image_widths: [320, 640, 960]
+content_image_sizes: "(min-width: 30em) 280px, 46vw"
 ---
 
 A book club in Zurich that meets twice a month, open to members and guests. It has two parts: a fiction club and a philosophical club. We read one book (or a long essay) and meet to discuss it; Russian and English are both used. You do not need to have finished the book to come along.
 
 Dates and titles are listed below. Check the calendar for the time and place of the next meeting.
+
+{{< gallery class="event-photos" >}}
+![Group photo after discussing Mother Night](images/2026-03-27_Book-club.jpg)
+![Meeting on Stanisław Lem's Summa Technologiae](images/2026-06-26_Book-club.jpg)
+{{< /gallery >}}
 
 {{< club-columns >}}
 {{< club-column title="Fiction club" posters="images/book-club_2026-06_Summa-Technologiae.jpg,images/book-club_Chevengur.jpg,images/book-club_Mother-night.jpg,images/book-club_Steppenwolf.jpg" >}}
